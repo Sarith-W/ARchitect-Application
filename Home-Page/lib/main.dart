@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Home()));
+  runApp(const MaterialApp(home: Home(key: Key('home'))));
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 2.9;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -26,104 +27,31 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Center(
-        child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25.0,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    SizedBox(
-                      width: double.infinity,
-                      height: (MediaQuery.of(context).size.height - 200) / 3,
-                      child: Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                        height: (MediaQuery.of(context).size.height - 200) / 3,
-                        alignment: Alignment.center,
-                        child: Center(
-                          child: Text(
-                            "SCAN",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 50,
-                                color: Colors.white),
-                          ),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Stack(
-                  children: <Widget>[
-                    SizedBox(
-                      width: double.infinity,
-                      height: (MediaQuery.of(context).size.height - 200) / 3,
-                      child: Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1109&q=80',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                        height: (MediaQuery.of(context).size.height - 200) / 3,
-                        alignment: Alignment.center,
-                        child: Center(
-                          child: Text(
-                            "CREATE",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 50,
-                                color: Colors.white),
-                          ),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Stack(
-                  children: <Widget>[
-                    SizedBox(
-                      width: double.infinity,
-                      height: (MediaQuery.of(context).size.height - 200) / 3,
-                      child: Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                        height: (MediaQuery.of(context).size.height - 200) / 3,
-                        alignment: Alignment.center,
-                        child: Center(
-                          child: Text(
-                            "EDIT.",
-                            style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 50,
-                                color: Colors.white),
-                          ),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 12),
+                buildImageStack(
+                    context,
+                    sizedBoxHeight,
+                    'https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+                    'SCAN'),
+                const SizedBox(height: 15.0),
+                buildImageStack(
+                    context,
+                    sizedBoxHeight,
+                    'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1109&q=80',
+                    'CREATE'),
+                const SizedBox(height: 15.0),
+                buildImageStack(
+                    context,
+                    sizedBoxHeight,
+                    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+                    'EDIT.'),
+                const SizedBox(height: 15.0),
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -131,25 +59,65 @@ class Home extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
-                      shadowColor: Colors.black,
+                      shadowColor: const Color.fromARGB(255, 120, 112, 112),
                       elevation: 2,
                       disabledForegroundColor: Colors.black.withOpacity(0.38),
                       shape: const RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(15.0))),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
                     ),
-                    child: Text("Initiate Scan",
-                        style: GoogleFonts.quicksand(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: Colors.white)),
+                    child: Text(
+                      "Initiate Scan",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
+            )),
+      ),
+    );
+  }
+
+  Widget buildImageStack(BuildContext context, double sizedBoxHeight,
+      String imageUrl, String text) {
+    return Stack(
+      children: <Widget>[
+        SizedBox(
+          width: double.infinity,
+          height: sizedBoxHeight,
+          child: Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  return const Center(child: Text('Image Not Found'));
+                },
+              ),
             ),
           ),
         ),
-      ),
+        Container(
+          height: sizedBoxHeight,
+          alignment: Alignment.center,
+          child: Center(
+            child: Text(
+              text,
+              style: GoogleFonts.montserrat(
+                fontWeight: FontWeight.w800,
+                fontSize: 50,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
