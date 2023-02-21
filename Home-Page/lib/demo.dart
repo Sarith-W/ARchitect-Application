@@ -2,24 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MaterialApp(home: Home(key: const Key('home'))));
+  runApp(const MaterialApp(home: Home()));
 }
 
 class Home extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 2.9;
+    final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 3.1;
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {
-            _scaffoldKey.currentState?.openDrawer();
-          }, //Menu button
+          onPressed: () {}, //Menu button
         ),
         title: Text("ARCHITECT",
             style: GoogleFonts.montserrat(
@@ -32,30 +28,28 @@ class Home extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 25.0,
-            ),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 25.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 buildImageStack(
                     context,
                     sizedBoxHeight,
                     'https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
                     'SCAN'),
-                const SizedBox(height: 15.0),
+                const SizedBox(height: 12.0),
                 buildImageStack(
                     context,
                     sizedBoxHeight,
                     'https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1109&q=80',
                     'CREATE'),
-                const SizedBox(height: 15.0),
+                const SizedBox(height: 12.0),
                 buildImageStack(
                     context,
                     sizedBoxHeight,
                     'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                    'EDIT.'),
-                const SizedBox(height: 15.0),
+                    'EDIT'),
+                const SizedBox(height: 12.0),
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -63,7 +57,7 @@ class Home extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
-                      shadowColor: const Color.fromARGB(255, 120, 112, 112),
+                      shadowColor: Colors.black,
                       elevation: 2,
                       disabledForegroundColor: Colors.black.withOpacity(0.38),
                       shape: const RoundedRectangleBorder(
@@ -83,13 +77,6 @@ class Home extends StatelessWidget {
               ],
             )),
       ),
-      drawer: Drawer(
-        child: Text("NAVIGATION",
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w800,
-              fontSize: 20,
-            )),
-      ),
     );
   }
 
@@ -106,10 +93,6 @@ class Home extends StatelessWidget {
               child: Image.network(
                 imageUrl,
                 fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  return const Center(child: Text('Image Not Found'));
-                },
               ),
             ),
           ),
