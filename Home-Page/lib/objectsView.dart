@@ -19,49 +19,39 @@ class ObjectsView extends StatefulWidget {
 }
 
 class _ObjectsViewState extends State<ObjectsView> {
-  late ARSessionManager arSessionManager;
-  late ARObjectManager arObjectManager;
-  late ARAnchorManager arAnchorManager;
-  late ARLocationManager arLocationManager;
+  late final ARSessionManager arSessionManager;
+  late final ARObjectManager arObjectManager;
+  late final ARAnchorManager arAnchorManager;
+  late final ARLocationManager arLocationManager;
 
-  ARNode? localObjectNode;
+  ARNode? webObjectNode;
 
   void onARViewCreated(
       ARSessionManager arSessionManager,
       ARObjectManager arObjectManager,
       ARAnchorManager arAnchorManager,
       ARLocationManager arLocationManager) {
-    // 1
     this.arSessionManager = arSessionManager;
     this.arObjectManager = arObjectManager;
-    // 2
     this.arSessionManager.onInitialize(
-          showFeaturePoints: false,
           showPlanes: true,
-          customPlaneTexturePath: "assets/triangle.png",
           showWorldOrigin: true,
-          handleTaps: false,
         );
-    // 3
     this.arObjectManager.onInitialize();
   }
 
-  Future<void> onLocalObjectButtonPressed() async {
-    // 1
-    if (localObjectNode != null) {
-      arObjectManager.removeNode(localObjectNode!);
-      localObjectNode = null;
+  Future<void> onWebObjectAtButtonPressed() async {
+    if (webObjectNode != null) {
+      arObjectManager.removeNode(webObjectNode!);
+      webObjectNode = null;
     } else {
-      // 2
       var newNode = ARNode(
-          type: NodeType.localGLTF2,
-          uri: "assets/Chicken_01/Chicken_01.gltf",
-          scale: vector.Vector3(0.2, 0.2, 0.2),
-          position: vector.Vector3(0.0, 0.0, 0.0),
-          rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0));
-      // 3
-      bool? didAddLocalNode = await arObjectManager.addNode(newNode);
-      localObjectNode = (didAddLocalNode!) ? newNode : null;
+          type: NodeType.webGLB,
+          uri:
+              "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Fox/glTF-Binary/Fox.glb",
+          scale: vector.Vector3(0.2, 0.2, 0.2));
+      bool? didAddWebNode = await arObjectManager.addNode(newNode);
+      webObjectNode = (didAddWebNode!) ? newNode : null;
     }
   }
 
@@ -69,11 +59,13 @@ class _ObjectsViewState extends State<ObjectsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ARCHITECT",
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w800,
-              fontSize: 20,
-            )),
+        title: Text(
+          "ARCHITECT",
+          style: GoogleFonts.montserrat(
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
+        ),
         centerTitle: true,
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
@@ -95,24 +87,31 @@ class _ObjectsViewState extends State<ObjectsView> {
                 ),
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: onLocalObjectButtonPressed,
-                      child: const Text("Add / Remove Local Object")),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: onWebObjectAtButtonPressed,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shadowColor: const Color.fromARGB(255, 120, 112, 112),
+                  elevation: 2,
+                  disabledForegroundColor: Colors.black.withOpacity(0.38),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  ),
                 ),
-                const SizedBox(
-                  width: 10,
+                child: Text(
+                  webObjectNode == null
+                      ? "Add Local Object"
+                      : "Remove Local Object",
+                  style: GoogleFonts.quicksand(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
                 ),
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () {
-                        //TODO
-                      },
-                      child: const Text("Add / Remove Web Object")),
-                )
-              ],
+              ),
             ),
           ],
         ),
