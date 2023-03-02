@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'signup.dart';
 
 void main() {
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false, home: Home(key: const Key('home'))));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
