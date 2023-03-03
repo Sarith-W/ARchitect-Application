@@ -1,4 +1,5 @@
 import 'package:architect_app/objectsView.dart';
+import 'package:architect_app/welcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,7 +27,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => MyApp()),
+                        builder: (context) => WelcomePage()),
                   );
                 },
               ),
@@ -64,7 +65,7 @@ class Home extends StatelessWidget {
                         context,
                         sizedBoxHeight,
                         'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                        'EDIT.'),
+                        'EDIT'),
                     const SizedBox(height: 15.0),
                     SizedBox(
                       width: double.infinity,

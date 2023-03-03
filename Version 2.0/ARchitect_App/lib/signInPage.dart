@@ -1,5 +1,6 @@
 import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/signUpPage.dart';
+import 'package:architect_app/welcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -44,7 +45,7 @@ class SignInPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyApp()),
+                                builder: (context) => WelcomePage()),
                           );
                         },
                         child: Container(
