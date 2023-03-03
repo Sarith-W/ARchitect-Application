@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84118704753",
+    "project_id": "signup-login-b0ca8",
+    "storage_bucket": "signup-login-b0ca8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84118704753:android:36a6627b03befe60a581d0",
+        "android_client_info": {
+          "package_name": "com.example.architect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84118704753-v26b5t1q0l8jsi0anrpkm7o9d7vraeke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHtNmH0hFxR57C3R__LCbNN4JPp20_25Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84118704753-v26b5t1q0l8jsi0anrpkm7o9d7vraeke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

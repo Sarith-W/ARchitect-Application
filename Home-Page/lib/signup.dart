@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'home.dart';
 
-class MyApp extends StatelessWidget{
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +17,7 @@ class signUpPage extends StatefulWidget {
   _signUpPageState createState() => _signUpPageState();
 }
 
-class _signUpPageState extends State<signUpPage>{
+class _signUpPageState extends State<signUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +50,7 @@ class _signUpPageState extends State<signUpPage>{
                         'assets/images/logo.png',
                         height: 100,
                         width: 100,
-                      )
-                  )
+                      ))
                 ],
               ),
               Container(
@@ -65,10 +63,9 @@ class _signUpPageState extends State<signUpPage>{
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: const Offset(0,3),
+                          offset: const Offset(0, 3),
                         )
-                      ]
-                  ),
+                      ]),
                   height: 510,
                   width: 370,
                   child: Column(
@@ -90,7 +87,8 @@ class _signUpPageState extends State<signUpPage>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                        margin:
+                            const EdgeInsets.only(top: 30, left: 30, right: 30),
                         height: 55,
                         width: 300,
                         child: TextField(
@@ -100,12 +98,12 @@ class _signUpPageState extends State<signUpPage>{
                             filled: true,
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black87, width: 2),
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20)
-                            ),
+                                borderRadius: BorderRadius.circular(20)),
                             labelText: "Enter your email",
                             labelStyle: const TextStyle(
                               color: Color(0xFF4E342E),
@@ -114,7 +112,8 @@ class _signUpPageState extends State<signUpPage>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                        margin:
+                            const EdgeInsets.only(top: 30, left: 30, right: 30),
                         height: 55,
                         width: 300,
                         child: TextField(
@@ -124,13 +123,13 @@ class _signUpPageState extends State<signUpPage>{
                             filled: true,
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black87, width: 2),
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             border: OutlineInputBorder(
-                              // borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
+                                // borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(20)),
                             labelText: "Enter a new password",
                             labelStyle: const TextStyle(
                               color: Color(0xFF4E342E),
@@ -139,7 +138,8 @@ class _signUpPageState extends State<signUpPage>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                        margin:
+                            const EdgeInsets.only(top: 30, left: 30, right: 30),
                         height: 55,
                         width: 300,
                         child: TextField(
@@ -149,13 +149,13 @@ class _signUpPageState extends State<signUpPage>{
                             filled: true,
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black87, width: 2),
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             border: OutlineInputBorder(
-                              // borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
+                                // borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(20)),
                             labelText: "Confirm the password",
                             labelStyle: const TextStyle(
                               color: Color(0xFF4E342E),
@@ -165,69 +165,67 @@ class _signUpPageState extends State<signUpPage>{
                       ),
                       Container(
                           margin: const EdgeInsets.only(top: 35),
-                        height: 45,
-                        width: 300,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.black87,
-                            foregroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                            ),
-                            textStyle: const TextStyle(
-                              fontFamily: 'Itim',
-                              fontSize: 17,
-                            )
-                          ),
-                          onPressed: ()){
-
-                          },
-                          child: const Text("Register"),
-                        )
-                      ),
+                          height: 45,
+                          width: 300,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.black87,
+                                foregroundColor: Colors.white,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                textStyle: const TextStyle(
+                                  fontFamily: 'Itim',
+                                  fontSize: 17,
+                                )),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Home()),
+                              );
+                            },
+                            child: const Text("Register"),
+                          )),
                       Container(
                           margin: const EdgeInsets.only(top: 20),
                           height: 45,
                           width: 300,
                           child: TextButton(
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.black12,
-                              foregroundColor: Colors.black,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                              ),
+                                backgroundColor: Colors.black12,
+                                foregroundColor: Colors.black,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
                                 textStyle: const TextStyle(
                                   fontFamily: 'Itim',
                                   fontSize: 17,
-                                )
-                            ),
-                            onPressed: (context, MaterialPageRoute(
-                        builder: (context) => const ())){
-
-                            },
+                                )),
+                            onPressed: () {},
                             child: const Text("Continue as Guest"),
-                          )
-                      ),
+                          )),
                       Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        height: 35,
-                        width: 300,
+                          margin: const EdgeInsets.only(top: 20),
+                          height: 35,
+                          width: 300,
                           child: TextButton(
                             style: TextButton.styleFrom(
                               foregroundColor: Colors.black87,
                             ),
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => signInPage()),
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => signInPage()),
                               );
                             },
-                            child: const Text("Already have an account? Sign in"),
-                          )
-                      ),
+                            child:
+                                const Text("Already have an account? Sign in"),
+                          )),
                     ],
-                  )
-              )
+                  ))
             ],
           )
         ],
@@ -236,17 +234,12 @@ class _signUpPageState extends State<signUpPage>{
   }
 }
 
-
-
-
-
 class signInPage extends StatefulWidget {
   @override
   _signInPageState createState() => _signInPageState();
 }
 
-
-class _signInPageState extends State<signInPage>{
+class _signInPageState extends State<signInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -279,8 +272,7 @@ class _signInPageState extends State<signInPage>{
                         'assets/images/logo.png',
                         height: 100,
                         width: 100,
-                      )
-                  )
+                      ))
                 ],
               ),
               Container(
@@ -293,10 +285,9 @@ class _signInPageState extends State<signInPage>{
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: const Offset(0,3),
+                          offset: const Offset(0, 3),
                         )
-                      ]
-                  ),
+                      ]),
                   height: 450,
                   width: 370,
                   child: Column(
@@ -318,7 +309,8 @@ class _signInPageState extends State<signInPage>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                        margin:
+                            const EdgeInsets.only(top: 30, left: 30, right: 30),
                         height: 55,
                         width: 300,
                         child: TextField(
@@ -328,13 +320,13 @@ class _signInPageState extends State<signInPage>{
                             filled: true,
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black87, width: 2),
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             border: OutlineInputBorder(
-                              // borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
+                                // borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(20)),
                             labelText: "Enter your email",
                             labelStyle: const TextStyle(
                               color: Color(0xFF4E342E),
@@ -343,7 +335,8 @@ class _signInPageState extends State<signInPage>{
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                        margin:
+                            const EdgeInsets.only(top: 30, left: 30, right: 30),
                         height: 55,
                         width: 300,
                         child: TextField(
@@ -353,13 +346,13 @@ class _signInPageState extends State<signInPage>{
                             filled: true,
                             fillColor: Colors.white,
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.black87, width: 2),
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             border: OutlineInputBorder(
-                              // borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(20)
-                            ),
+                                // borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(20)),
                             labelText: "Enter the password",
                             labelStyle: const TextStyle(
                               color: Color(0xFF4E342E),
@@ -375,56 +368,47 @@ class _signInPageState extends State<signInPage>{
                             style: TextButton.styleFrom(
                               foregroundColor: Colors.black87,
                             ),
-                            onPressed: (){
-
-                            },
+                            onPressed: () {},
                             child: const Text("Forgot Password?"),
-                          )
-                      ),
+                          )),
                       Container(
                           margin: const EdgeInsets.only(top: 15),
                           height: 45,
                           width: 300,
                           child: TextButton(
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.black87,
-                              foregroundColor: Colors.white,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                              ),
+                                backgroundColor: Colors.black87,
+                                foregroundColor: Colors.white,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
                                 textStyle: const TextStyle(
                                   fontFamily: 'Itim',
                                   fontSize: 17,
-                                )
-                            ),
-                            onPressed: (){
-
-                            },
+                                )),
+                            onPressed: () {},
                             child: const Text("Sign In"),
-                          )
-                      ),
+                          )),
                       Container(
                           margin: const EdgeInsets.only(top: 20),
                           height: 45,
                           width: 300,
                           child: TextButton(
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.black12,
-                              foregroundColor: Colors.black,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                              ),
+                                backgroundColor: Colors.black12,
+                                foregroundColor: Colors.black,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
                                 textStyle: const TextStyle(
                                   fontFamily: 'Itim',
                                   fontSize: 17,
-                                )
-                            ),
-                            onPressed: (){
-
-                            },
+                                )),
+                            onPressed: () {},
                             child: const Text("Continue as Guest"),
-                          )
-                      ),
+                          )),
                       Container(
                           margin: const EdgeInsets.only(top: 20),
                           height: 35,
@@ -433,15 +417,14 @@ class _signInPageState extends State<signInPage>{
                             style: TextButton.styleFrom(
                               foregroundColor: Colors.black87,
                             ),
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text("Don't have an account? Register"),
-                          )
-                      ),
+                            child:
+                                const Text("Don't have an account? Register"),
+                          )),
                     ],
-                  )
-              )
+                  ))
             ],
           )
         ],
