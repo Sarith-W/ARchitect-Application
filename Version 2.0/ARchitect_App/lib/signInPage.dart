@@ -1,6 +1,7 @@
 import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/signUpPage.dart';
 import 'package:architect_app/welcomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -11,6 +12,49 @@ import 'main.dart';
 class SignInPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   SignInPage({Key? key}) : super(key: key);
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  Future signIn(BuildContext context) async{
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
+      );
+    } on FirebaseAuthException catch (e){
+      print(e);
+      Widget okButton = TextButton(
+        child: const Text("OK"),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      );
+      AlertDialog alert = AlertDialog(
+        title: const Text("Oops..."),
+        content: Text(e.message!),
+        actions: [
+          okButton,
+        ],
+      );
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,143 +119,149 @@ class SignInPage extends StatelessWidget {
                     ),
                     height: 450,
                     width: 370,
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 15),
-                          height: 30,
-                          width: 300,
-                          child: const Align(
-                            child: Text(
-                              "Welcome Back",
-                              style: TextStyle(
-                                fontFamily: 'Itim',
-                                fontSize: 25,
-                                fontStyle: FontStyle.italic,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
-                          height: 55,
-                          width: 300,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              hintText: "Ex: abc@gmail.com",
-                              filled: true,
-                              fillColor: Colors.white,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.black87, width: 2),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              border: OutlineInputBorder(
-                                // borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20)
-                              ),
-                              labelText: "Enter your email",
-                              labelStyle: const TextStyle(
-                                color: Color(0xFF4E342E),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
-                          height: 55,
-                          width: 300,
-                          child: TextField(
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              hintText: "xxxxxxx",
-                              filled: true,
-                              fillColor: Colors.white,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.black87, width: 2),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              border: OutlineInputBorder(
-                                // borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(20)
-                              ),
-                              labelText: "Enter the password",
-                              labelStyle: const TextStyle(
-                                color: Color(0xFF4E342E),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                            margin: const EdgeInsets.only(left: 150),
-                            height: 35,
-                            width: 300,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.black87,
-                              ),
-                              onPressed: (){
-
-                              },
-                              child: const Text("Forgot Password?"),
-                            )
-                        ),
-                        Container(
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          Container(
                             margin: const EdgeInsets.only(top: 15),
+                            height: 30,
+                            width: 300,
+                            child: const Align(
+                              child: Text(
+                                "Welcome Back",
+                                style: TextStyle(
+                                  fontFamily: 'Itim',
+                                  fontSize: 25,
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                            height: 55,
+                            width: 300,
+                            child: TextFormField(
+                              controller: emailController,
+                              cursorColor: Colors.black,
+                              decoration: InputDecoration(
+                                hintText: "Ex: abc@gmail.com",
+                                filled: true,
+                                fillColor: Colors.white,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                border: OutlineInputBorder(
+                                  // borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(20)
+                                ),
+                                labelText: "Enter your email",
+                                labelStyle: const TextStyle(
+                                  color: Color(0xFF4E342E),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                            height: 55,
+                            width: 300,
+                            child: TextFormField(
+                              controller: passwordController,
+                              cursorColor: Colors.black,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: "xxxxxxx",
+                                filled: true,
+                                fillColor: Colors.white,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                border: OutlineInputBorder(
+                                  // borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(20)
+                                ),
+                                labelText: "Enter the password",
+                                labelStyle: const TextStyle(
+                                  color: Color(0xFF4E342E),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(left: 150),
+                              height: 35,
+                              width: 300,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: Colors.black87,
+                                ),
+                                onPressed: (){
+
+                                },
+                                child: const Text("Forgot Password?"),
+                              )
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(top: 15),
+                              height: 45,
+                              width: 300,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                    backgroundColor: Colors.black87,
+                                    foregroundColor: Colors.white,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    textStyle: const TextStyle(
+                                      fontFamily: 'Itim',
+                                      fontSize: 17,
+                                    )
+                                ),
+                                onPressed: (){
+                                  signIn(context);
+                                },
+                                child: const Text("Sign In"),
+                              )
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
                             height: 45,
                             width: 300,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                  backgroundColor: Colors.black87,
-                                  foregroundColor: Colors.white,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  textStyle: const TextStyle(
-                                    fontFamily: 'Itim',
-                                    fontSize: 17,
-                                  )
-                              ),
-                              onPressed: (){
+                            child: SignInButton(
+                              Buttons.Google,
+                              text: "Sign In with Google",
+                              onPressed: () {
 
                               },
-                              child: const Text("Sign In"),
-                            )
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          height: 45,
-                          width: 300,
-                          child: SignInButton(
-                            Buttons.Google,
-                            text: "Sign In with Google",
-                            onPressed: () {
-
-                            },
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                            margin: const EdgeInsets.only(top: 20),
-                            height: 35,
-                            width: 300,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.black87,
-                              ),
-                              onPressed: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => SignUpPage(key: const Key('signUpPage'))),
-                                );
-                              },
-                              child: const Text("Don't have an account? Register"),
-                            )
-                        ),
-                      ],
+                          Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              height: 35,
+                              width: 300,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: Colors.black87,
+                                ),
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => SignUpPage(key: const Key('signUpPage'))),
+                                  );
+                                },
+                                child: const Text("Don't have an account? Register"),
+                              )
+                          ),
+                        ],
+                      ),
                     )
                 )
               ],

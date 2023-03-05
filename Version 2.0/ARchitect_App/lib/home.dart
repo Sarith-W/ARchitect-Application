@@ -1,5 +1,6 @@
 import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/welcomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    String? username = '';
+    if (user?.email == null){
+      username = "Guest";
+    }else{
+      username = user?.email;
+    }
     final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 3.1;
     return WillPopScope(
       onWillPop: () async{
@@ -24,6 +32,7 @@ class Home extends StatelessWidget {
                 icon: const Icon(Icons.login),
                 tooltip: 'Logout',
                 onPressed: () {
+                  FirebaseAuth.instance.signOut();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -104,6 +113,13 @@ class Home extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         fontSize: 20,
                       )),
+                ),
+                ListTile(
+                  title: Text(
+                      "User: ${username!}",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold),
+                  ),
                 ),
                 ListTile(
                   //leading: Icon(Icons.new_page),

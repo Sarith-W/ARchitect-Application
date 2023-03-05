@@ -25,13 +25,28 @@ PODS:
   - BlueCryptor (1.0.32)
   - BlueECC (1.2.5)
   - BlueRSA (1.0.200)
+  - Firebase/Auth (9.6.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 9.6.0)
   - Firebase/CoreOnly (9.6.0):
     - FirebaseCore (= 9.6.0)
   - Firebase/RemoteConfig (9.6.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 9.6.0)
+  - firebase_auth (4.2.9):
+    - Firebase/Auth (= 9.6.0)
+    - firebase_core
+    - Flutter
+  - firebase_core (2.7.0):
+    - Firebase/CoreOnly (= 9.6.0)
+    - Flutter
   - FirebaseABTesting (9.6.0):
     - FirebaseCore (~> 9.0)
+  - FirebaseAuth (9.6.0):
+    - FirebaseCore (~> 9.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GTMSessionFetcher/Core (< 3.0, >= 1.7)
   - FirebaseCore (9.6.0):
     - FirebaseCoreDiagnostics (~> 9.0)
     - FirebaseCoreInternal (~> 9.0)
@@ -68,11 +83,21 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.3.2)
   - "GoogleToolboxForMac/NSData+zlib (2.3.2)":
     - GoogleToolboxForMac/Defines (= 2.3.2)
+  - GoogleUtilities/AppDelegateSwizzler (7.11.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
   - GoogleUtilities/Environment (7.11.0):
     - PromisesObjC (< 3.0, >= 1.2)
   - GoogleUtilities/Logger (7.11.0):
     - GoogleUtilities/Environment
+  - GoogleUtilities/Network (7.11.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.11.0)"
+  - GoogleUtilities/Reachability (7.11.0):
+    - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.11.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.7.2)
@@ -101,6 +126,8 @@ PODS:
 
 DEPENDENCIES:
   - ar_flutter_plugin (from `.symlinks/plugins/ar_flutter_plugin/ios`)
+  - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
+  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
@@ -114,6 +141,7 @@ SPEC REPOS:
     - BlueRSA
     - Firebase
     - FirebaseABTesting
+    - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreInternal
@@ -134,6 +162,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ar_flutter_plugin:
     :path: ".symlinks/plugins/ar_flutter_plugin/ios"
+  firebase_auth:
+    :path: ".symlinks/plugins/firebase_auth/ios"
+  firebase_core:
+    :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
   geolocator_apple:
@@ -150,7 +182,10 @@ SPEC CHECKSUMS:
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
+  firebase_auth: 7164685a21bf2bec2e906d175f68ed9b798ea95e
+  firebase_core: c1a70efcc8b70b30904b4d6b89d854c0ba0d6399
   FirebaseABTesting: 61826730ce9eee8781ba99a2b3420e9bce148dc9
+  FirebaseAuth: e4a5d3c36e778e41141b91cc861103a441d80bcc
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
   FirebaseCoreDiagnostics: 99a495094b10a57eeb3ae8efa1665700ad0bdaa6
   FirebaseCoreInternal: bca76517fe1ed381e989f5e7d8abb0da8d85bed3
@@ -172,6 +207,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
 
-PODFILE CHECKSUM: 3b84525d1bf858b04b2efa98c134943e1e27f505
+PODFILE CHECKSUM: b7a41776bfb84100f0a17d4b60ea002c303d4e24
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0
