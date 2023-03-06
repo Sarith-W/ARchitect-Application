@@ -1,11 +1,14 @@
 import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/signUpPage.dart';
+import 'package:architect_app/splashScreenForLogin.dart';
 import 'package:architect_app/welcomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
+import 'forgotPassword.dart';
 import 'home.dart';
 import 'main.dart';
 
@@ -30,9 +33,50 @@ class SignInPage extends StatelessWidget {
       );
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
+        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
       );
     } on FirebaseAuthException catch (e){
+      print(e);
+      Widget okButton = TextButton(
+        child: const Text("OK"),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      );
+      AlertDialog alert = AlertDialog(
+        title: const Text("Oops..."),
+        content: Text(e.message!),
+        actions: [
+          okButton,
+        ],
+      );
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+  }
+
+  Future signInWithGoogle(BuildContext context) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+          scopes: <String>["email"]).signIn();
+
+      final GoogleSignInAuthentication googleAuth = await googleUser!
+          .authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      FirebaseAuth.instance.signInWithCredential(credential);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+      );
+    }on FirebaseAuthException catch (e){
       print(e);
       Widget okButton = TextButton(
         child: const Text("OK"),
@@ -201,7 +245,10 @@ class SignInPage extends StatelessWidget {
                                   foregroundColor: Colors.black87,
                                 ),
                                 onPressed: (){
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ForgotPasswordPage(key: const Key('ForgotPasswordPage'))),
+                                  );
                                 },
                                 child: const Text("Forgot Password?"),
                               )
@@ -236,7 +283,7 @@ class SignInPage extends StatelessWidget {
                               Buttons.Google,
                               text: "Sign In with Google",
                               onPressed: () {
-
+                                signInWithGoogle(context);
                               },
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(20)),

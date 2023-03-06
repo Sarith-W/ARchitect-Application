@@ -1,8 +1,10 @@
 import 'package:architect_app/objectsView.dart';
+import 'package:architect_app/splashScreenForSignOut.dart';
 import 'package:architect_app/welcomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'main.dart';
 
@@ -13,6 +15,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
+
     String? username = '';
     if (user?.email == null){
       username = "Guest";
@@ -35,8 +38,7 @@ class Home extends StatelessWidget {
                   FirebaseAuth.instance.signOut();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => WelcomePage()),
+                    MaterialPageRoute(builder: (context) => const SplashSignOut(key: Key('splash'))),
                   );
                 },
               ),

@@ -1,6 +1,7 @@
 import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/signInPage.dart';
 import 'package:architect_app/signUpPage.dart';
+import 'package:architect_app/splashScreenForLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -140,7 +141,7 @@ class WelcomePage extends StatelessWidget {
                           onPressed: (){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
+                              MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
                             );
                           },
                           child: const Text("Continue as Guest"),
