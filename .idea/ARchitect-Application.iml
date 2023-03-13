@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Version 2.0/ARchitect_App/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Version 2.0/ARchitect_App/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Version 2.0/ARchitect_App/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Home-Page/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/Home-Page/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Home-Page/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ARchitect_App/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ARchitect_App/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ARchitect_App/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/architect/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/architect/build" />
+      <excludeFolder url="file://$MODULE_DIR$/architect/.pub" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
