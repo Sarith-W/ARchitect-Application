@@ -10,6 +10,7 @@ import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ARViewWidget extends StatefulWidget {
@@ -50,48 +51,80 @@ class _ARViewWidgetState extends State<ARViewWidget> {
               children: [
                 GestureDetector(
                   onVerticalDragUpdate: (details) {
-                    if (details.delta.dy > 0) {
-                      // Swiping down, do nothing
-                    } else {
-                      // Swiping up, show bottom sheet
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SizedBox(
-                            child: Wrap(
-                              children: [
-                                ListTile(
-                                  leading: const Icon(Icons.delete),
-                                  title: const Text('Remove Everything'),
-                                  onTap: () {
-                                    onRemoveEverything();
-                                    Navigator.pop(context);
-                                  },
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: SizedBox(
+                          height: 170,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Scrollbar(
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        buildOption(
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb",
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer_img.PNG",
+                                        ),
+                                        buildOption(
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table.glb",
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table_img.PNG",
+                                        ),
+                                        buildOption(
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_chair.glb",
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_chair_img.PNG",
+                                        ),
+                                        buildOption(
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_couch.glb",
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_couch_img.PNG",
+                                        ),
+                                        buildOption(
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_drawer.glb",
+                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_drawer_img.PNG",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                                ListTile(
-                                  leading: const Icon(Icons.arrow_forward_ios),
-                                  title: const Text('Wood Drawer'),
-                                  onTap: () {
-                                    currentObjectUri =
-                                        "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
-                                    Navigator.pop(context);
-                                  },
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 50,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 10.0),
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: Colors.red,
+                                    child: InkWell(
+                                      onTap: () => onRemoveEverything(),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      splashColor: Colors.red.withOpacity(0.5),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const <Widget>[
+                                          Icon(Icons.delete,
+                                              color: Colors.white),
+                                          SizedBox(width: 8.0),
+                                          Text('Remove Everything',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 15,
+                                                  color: Colors.white)),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                ListTile(
-                                  leading: const Icon(Icons.arrow_forward_ios),
-                                  title: const Text('Wood Table'),
-                                  onTap: () {
-                                    currentObjectUri =
-                                        "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table.glb";
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
                   },
                   child: Container(
                     width: double.infinity,
@@ -174,5 +207,25 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     } else {
       arSessionManager!.onError("Adding Anchor failed");
     }
+  }
+
+  Widget buildOption(String objectUrl, String imageUrl) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 5.0),
+      child: GestureDetector(
+        onTap: () {
+          currentObjectUri = objectUrl;
+          Navigator.pop(context);
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(
+            imageUrl,
+            width: 100,
+            height: 100,
+          ),
+        ),
+      ),
+    );
   }
 }
