@@ -1,4 +1,3 @@
-import 'package:architect_app/objectsView.dart';
 import 'package:architect_app/signInPage.dart';
 import 'package:architect_app/splashScreenForLogin.dart';
 import 'package:architect_app/welcomePage.dart';

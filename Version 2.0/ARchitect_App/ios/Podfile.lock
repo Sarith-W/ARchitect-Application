@@ -39,11 +39,11 @@ PODS:
   - Firebase/RemoteConfig (9.6.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 9.6.0)
-  - firebase_auth (4.2.9):
+  - firebase_auth (4.2.10):
     - Firebase/Auth (= 9.6.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.7.0):
+  - firebase_core (2.7.1):
     - Firebase/CoreOnly (= 9.6.0)
     - Flutter
   - FirebaseABTesting (9.6.0):
@@ -205,8 +205,8 @@ SPEC CHECKSUMS:
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
-  firebase_auth: 7164685a21bf2bec2e906d175f68ed9b798ea95e
-  firebase_core: c1a70efcc8b70b30904b4d6b89d854c0ba0d6399
+  firebase_auth: b23273387322f1ea750b1c53be841df451eab802
+  firebase_core: ff8d8e3039894c8f10e0180a14a89954c3d393fa
   FirebaseABTesting: 61826730ce9eee8781ba99a2b3420e9bce148dc9
   FirebaseAuth: e4a5d3c36e778e41141b91cc861103a441d80bcc
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
