@@ -1,0 +1,178 @@
+import 'package:ar_flutter_plugin/datatypes/config_planedetection.dart';
+import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
+import 'package:ar_flutter_plugin/datatypes/node_types.dart';
+import 'package:ar_flutter_plugin/managers/ar_anchor_manager.dart';
+import 'package:ar_flutter_plugin/managers/ar_location_manager.dart';
+import 'package:ar_flutter_plugin/managers/ar_object_manager.dart';
+import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
+import 'package:ar_flutter_plugin/models/ar_anchor.dart';
+import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
+import 'package:ar_flutter_plugin/models/ar_node.dart';
+import 'package:flutter/material.dart';
+import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
+
+class ARViewWidget extends StatefulWidget {
+  const ARViewWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ARViewWidget> createState() => _ARViewWidgetState();
+}
+
+class _ARViewWidgetState extends State<ARViewWidget> {
+  ARSessionManager? arSessionManager;
+  ARObjectManager? arObjectManager;
+  ARAnchorManager? arAnchorManager;
+  List<ARNode> nodes = [];
+  List<ARAnchor> anchors = [];
+  String currentObjectUri =
+      "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+
+  @override
+  void dispose() {
+    super.dispose();
+    arSessionManager!.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          ARView(
+            onARViewCreated: onARViewCreated,
+            planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
+          ),
+          Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onVerticalDragUpdate: (details) {
+                    if (details.delta.dy > 0) {
+                      // Swiping down, do nothing
+                    } else {
+                      // Swiping up, show bottom sheet
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            child: Wrap(
+                              children: [
+                                ListTile(
+                                  leading: const Icon(Icons.delete),
+                                  title: const Text('Remove Everything'),
+                                  onTap: () {
+                                    onRemoveEverything();
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: const Icon(Icons.arrow_forward_ios),
+                                  title: const Text('Wood Drawer'),
+                                  onTap: () {
+                                    currentObjectUri =
+                                        "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: const Icon(Icons.arrow_forward_ios),
+                                  title: const Text('Wood Table'),
+                                  onTap: () {
+                                    currentObjectUri =
+                                        "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table.glb";
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(15),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.keyboard_arrow_up),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onARViewCreated(
+      ARSessionManager arSessionManager,
+      ARObjectManager arObjectManager,
+      ARAnchorManager arAnchorManager,
+      ARLocationManager arLocationManager) {
+    this.arSessionManager = arSessionManager;
+    this.arObjectManager = arObjectManager;
+    this.arAnchorManager = arAnchorManager;
+    this.arSessionManager!.onInitialize(
+          showFeaturePoints: false,
+          showPlanes: true,
+          showWorldOrigin: false,
+          handlePans: true,
+          handleRotation: true,
+        );
+    this.arObjectManager!.onInitialize();
+    this.arSessionManager!.onPlaneOrPointTap = onPlaneOrPointTapped;
+  }
+
+  Future<void> onRemoveEverything() async {
+    for (var anchor in anchors) {
+      arAnchorManager!.removeAnchor(anchor);
+    }
+    anchors = [];
+  }
+
+  Future<void> onPlaneOrPointTapped(
+      List<ARHitTestResult> hitTestResults) async {
+    var singleHitTestResult = hitTestResults.firstWhere(
+        (hitTestResult) => hitTestResult.type == ARHitTestResultType.plane);
+    var newAnchor =
+        ARPlaneAnchor(transformation: singleHitTestResult.worldTransform);
+    bool? didAddAnchor = await arAnchorManager!.addAnchor(newAnchor);
+    if (didAddAnchor!) {
+      anchors.add(newAnchor);
+      var newNode = ARNode(
+          type: NodeType.webGLB,
+          uri: currentObjectUri,
+          scale: vector.Vector3(0.5, 0.5, 0.5),
+          position: vector.Vector3(0.0, 0.0, 0.0),
+          rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0));
+      bool? didAddNodeToAnchor =
+          await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
+      if (didAddNodeToAnchor!) {
+        nodes.add(newNode);
+      } else {
+        arSessionManager!.onError("Adding Node to Anchor failed");
+      }
+    } else {
+      arSessionManager!.onError("Adding Anchor failed");
+    }
+  }
+}
