@@ -42,7 +42,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
         children: [
           ARView(
             onARViewCreated: onARViewCreated,
-            planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
+            planeDetectionConfig: PlaneDetectionConfig.horizontal,
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
@@ -110,7 +110,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                               color: Colors.white),
                                           SizedBox(width: 8.0),
                                           Text('Remove Everything',
-                                              style: TextStyle(
+                                              style: GoogleFonts.quicksand(
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 15,
                                                   color: Colors.white)),
