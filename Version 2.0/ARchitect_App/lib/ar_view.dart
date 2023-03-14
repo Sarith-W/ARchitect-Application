@@ -167,6 +167,8 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     this.arSessionManager!.onInitialize(
           showFeaturePoints: false,
           showPlanes: true,
+          customPlaneTexturePath:
+              "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/triangle.PNG",
           showWorldOrigin: false,
           handlePans: true,
           handleRotation: true,
