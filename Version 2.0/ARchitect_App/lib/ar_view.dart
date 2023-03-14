@@ -105,7 +105,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
-                                        children: const <Widget>[
+                                        children: <Widget>[
                                           Icon(Icons.delete,
                                               color: Colors.white),
                                           SizedBox(width: 8.0),
