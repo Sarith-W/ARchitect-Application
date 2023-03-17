@@ -31,6 +31,8 @@ PODS:
   - BlueCryptor (1.0.32)
   - BlueECC (1.2.5)
   - BlueRSA (1.0.200)
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - Firebase/Auth (9.6.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 9.6.0)
@@ -39,11 +41,11 @@ PODS:
   - Firebase/RemoteConfig (9.6.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 9.6.0)
-  - firebase_auth (4.2.10):
+  - firebase_auth (4.3.0):
     - Firebase/Auth (= 9.6.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.7.1):
+  - firebase_core (2.8.0):
     - Firebase/CoreOnly (= 9.6.0)
     - Flutter
   - FirebaseABTesting (9.6.0):
@@ -117,6 +119,8 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (1.7.2)
+  - image_picker_ios (0.0.1):
+    - Flutter
   - KituraContracts (1.2.1):
     - LoggerAPI (~> 1.7)
   - LoggerAPI (1.9.200):
@@ -139,16 +143,24 @@ PODS:
     - BlueRSA (~> 1.0)
     - KituraContracts (~> 1.2)
     - LoggerAPI (~> 1.7)
+  - tflite_flutter (0.1.0):
+    - Flutter
+  - tflite_flutter_helper (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - ar_flutter_plugin (from `.symlinks/plugins/ar_flutter_plugin/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - tflite_flutter (from `.symlinks/plugins/tflite_flutter/ios`)
+  - tflite_flutter_helper (from `.symlinks/plugins/tflite_flutter_helper/ios`)
 
 SPEC REPOS:
   trunk:
@@ -182,6 +194,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ar_flutter_plugin:
     :path: ".symlinks/plugins/ar_flutter_plugin/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -192,10 +206,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/geolocator_apple/ios"
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
+  tflite_flutter:
+    :path: ".symlinks/plugins/tflite_flutter/ios"
+  tflite_flutter_helper:
+    :path: ".symlinks/plugins/tflite_flutter_helper/ios"
 
 SPEC CHECKSUMS:
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
@@ -204,9 +224,10 @@ SPEC CHECKSUMS:
   BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
+  camera_avfoundation: 3125e8cd1a4387f6f31c6c63abb8a55892a9eeeb
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
-  firebase_auth: b23273387322f1ea750b1c53be841df451eab802
-  firebase_core: ff8d8e3039894c8f10e0180a14a89954c3d393fa
+  firebase_auth: 04d3a688052f60ef1bcc5cdffb5991ab2622e722
+  firebase_core: 05d20ff9377fa4463d9e3fa412f1e9fa7bfaf4d8
   FirebaseABTesting: 61826730ce9eee8781ba99a2b3420e9bce148dc9
   FirebaseAuth: e4a5d3c36e778e41141b91cc861103a441d80bcc
   FirebaseCore: 2082fffcd855f95f883c0a1641133eb9bbe76d40
@@ -224,6 +245,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
@@ -232,6 +254,8 @@ SPEC CHECKSUMS:
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
+  tflite_flutter: 9157a660578930a99728974f247369af1c3595d5
+  tflite_flutter_helper: 543b46b6bd064b21c92ea6e54bc0b29f1ce74cb5
 
 PODFILE CHECKSUM: b7a41776bfb84100f0a17d4b60ea002c303d4e24
 
