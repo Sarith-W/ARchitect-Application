@@ -2,10 +2,6 @@ import 'package:architect_app/signInPage.dart';
 import 'package:architect_app/signUpPage.dart';
 import 'package:architect_app/splashScreenForLogin.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'home.dart';
-import 'main.dart';
 
 class WelcomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,7 +35,7 @@ class WelcomePage extends StatelessWidget {
             ),
             Container(
                 margin: const EdgeInsets.only(top: 300, left: 27),
-                height: 370,
+                height: 360,
                 width: 370,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -72,8 +68,8 @@ class WelcomePage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        margin: const EdgeInsets.only(top: 40),
-                        height: 50,
+                        margin: const EdgeInsets.only(top: 30),
+                        height: 60,
                         width: 300,
                         child: TextButton(
                           style: TextButton.styleFrom(
@@ -97,8 +93,8 @@ class WelcomePage extends StatelessWidget {
                         )
                     ),
                     Container(
-                        margin: const EdgeInsets.only(top: 30),
-                        height: 50,
+                        margin: const EdgeInsets.only(top: 20),
+                        height: 60,
                         width: 300,
                         child: TextButton(
                           style: TextButton.styleFrom(
@@ -122,8 +118,8 @@ class WelcomePage extends StatelessWidget {
                         )
                     ),
                     Container(
-                        margin: const EdgeInsets.only(top: 30),
-                        height: 50,
+                        margin: const EdgeInsets.only(top: 20),
+                        height: 60,
                         width: 300,
                         child: TextButton(
                           style: TextButton.styleFrom(
