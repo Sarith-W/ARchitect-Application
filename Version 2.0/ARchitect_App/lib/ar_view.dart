@@ -8,10 +8,18 @@ import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
 import 'package:ar_flutter_plugin/models/ar_anchor.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
+import 'package:image/image.dart' as img;
+import 'classifier.dart';
+import 'dart:io';
+
+import 'model.dart';
 
 class ARViewWidget extends StatefulWidget {
   const ARViewWidget({Key? key}) : super(key: key);
@@ -26,8 +34,17 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   ARAnchorManager? arAnchorManager;
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
-  String currentObjectUri =
-      "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+  String currentObjectUri = "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+  ScreenshotController screenshotController = ScreenshotController();
+  late Classifier _classifier;
+  img.Image? fox;
+  Category? category;
+
+  @override
+  void initState() {
+    super.initState();
+    _classifier = Model();
+  }
 
   @override
   void dispose() {
@@ -56,9 +73,25 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                       builder: (BuildContext context) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: SizedBox(
-                          height: 170,
+                          height: 250,
                           child: Column(
                             children: [
+                              Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                height: 50,
+                                width: 320,
+                                child: FloatingActionButton.extended(
+                                  label: const Text('Rate the Furniture Arrangement'),
+                                  backgroundColor: Colors.black,
+                                  icon: const Icon(
+                                    Icons.table_bar_rounded,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () {
+                                    onTakeScreenshot();
+                                  },
+                                ),
+                              ),
                               Expanded(
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
@@ -176,6 +209,60 @@ class _ARViewWidgetState extends State<ARViewWidget> {
       arAnchorManager!.removeAnchor(anchor);
     }
     anchors = [];
+  }
+
+  Future<void> onTakeScreenshot() async {
+    var image = await arSessionManager!.snapshot();
+    await showDialog(
+        context: context,
+        builder: (_) => Dialog(
+            child: Screenshot(
+              controller: screenshotController,
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: image, fit: BoxFit.cover)
+                ),
+              ),
+            )
+        ));
+
+    final path = (await getApplicationDocumentsDirectory ()).path;
+    String fileName = "image.png";
+    screenshotController.captureAndSave(
+        path,
+        fileName:fileName
+    );
+    String imagePath = '$path/image.png';
+    File imageFile = File(imagePath);
+    List<int> imageBytes = imageFile.readAsBytesSync();
+    img.Image im = img.decodeImage(imageBytes)!;
+
+    // img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
+    var pred = _classifier.predict(im);
+    print(pred);
+
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    AlertDialog alert = AlertDialog(
+      title: const Text("Here's the Result"),
+      content: Text(pred.toString()),
+      actions: [
+        okButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+    // setState(() {
+    //   this.category = pred as Category?;
+    // });
   }
 
   Future<void> onPlaneOrPointTapped(
