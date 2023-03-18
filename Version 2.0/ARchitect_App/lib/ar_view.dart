@@ -282,9 +282,9 @@ class _ARViewWidgetState extends State<ARViewWidget> {
         return alert;
       },
     );
-    setState(() {
-      this.category = pred as Category?;
-    });
+    // setState(() {
+    //   this.category = pred as Category?;
+    // });
   }
 
   Future<void> onPlaneOrPointTapped(

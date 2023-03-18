@@ -31,7 +31,7 @@ PODS:
   - BlueCryptor (1.0.32)
   - BlueECC (1.2.5)
   - BlueRSA (1.0.200)
-  - camera_avfoundation (0.0.1):
+  - camera (0.0.1):
     - Flutter
   - Firebase/Auth (9.6.0):
     - Firebase/CoreOnly
@@ -150,7 +150,7 @@ PODS:
 
 DEPENDENCIES:
   - ar_flutter_plugin (from `.symlinks/plugins/ar_flutter_plugin/ios`)
-  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - camera (from `.symlinks/plugins/camera/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
@@ -194,8 +194,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ar_flutter_plugin:
     :path: ".symlinks/plugins/ar_flutter_plugin/ios"
-  camera_avfoundation:
-    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  camera:
+    :path: ".symlinks/plugins/camera/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -224,7 +224,7 @@ SPEC CHECKSUMS:
   BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
   BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
   BlueRSA: dfeef51db96bcc4edec654956c1581adbda4e6a3
-  camera_avfoundation: 3125e8cd1a4387f6f31c6c63abb8a55892a9eeeb
+  camera: 3164201dc344383e62282964016528c4f5a9ad50
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   firebase_auth: 04d3a688052f60ef1bcc5cdffb5991ab2622e722
   firebase_core: 05d20ff9377fa4463d9e3fa412f1e9fa7bfaf4d8
