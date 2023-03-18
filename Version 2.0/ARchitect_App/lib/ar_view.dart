@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:io';
 import 'package:ar_flutter_plugin/datatypes/config_planedetection.dart';
 import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
 import 'package:ar_flutter_plugin/datatypes/node_types.dart';
@@ -10,16 +8,10 @@ import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
 import 'package:ar_flutter_plugin/models/ar_anchor.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:screenshot/screenshot.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
-import 'package:image/image.dart' as img;
-import 'classifier.dart';
-import 'model.dart';
 
 class ARViewWidget extends StatefulWidget {
   const ARViewWidget({Key? key}) : super(key: key);
@@ -34,17 +26,8 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   ARAnchorManager? arAnchorManager;
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
-  String currentObjectUri = "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
-  ScreenshotController screenshotController = ScreenshotController();
-  late Classifier _classifier;
-  img.Image? fox;
-  Category? category;
-
-  @override
-  void initState() {
-    super.initState();
-    _classifier = Model();
-  }
+  String currentObjectUri =
+      "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
 
   @override
   void dispose() {
@@ -73,41 +56,9 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                       builder: (BuildContext context) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: SizedBox(
-                          height: 360,
+                          height: 170,
                           child: Column(
                             children: [
-                              Container(
-                                margin: const EdgeInsets.only(top: 20),
-                                height: 50,
-                                width: 320,
-                                child: FloatingActionButton.extended(
-                                  label: const Text('Recommend a Color'),
-                                  backgroundColor: Colors.black,
-                                  icon: const Icon(
-                                    Icons.color_lens_rounded,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () {
-
-                                  },
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 20),
-                                height: 50,
-                                width: 320,
-                                child: FloatingActionButton.extended(
-                                  label: const Text('Rate the Furniture Arrangement'),
-                                  backgroundColor: Colors.black,
-                                  icon: const Icon(
-                                    Icons.table_bar_rounded,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () {
-                                    onTakeScreenshot();
-                                  },
-                                ),
-                              ),
                               Expanded(
                                 child: Scrollbar(
                                   child: SingleChildScrollView(
@@ -158,11 +109,13 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                           Icon(Icons.delete,
                                               color: Colors.white),
                                           SizedBox(width: 8.0),
-                                          Text('Remove Everything',
-                                              style: GoogleFonts.quicksand(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 15,
-                                                  color: Colors.white)),
+                                          Text(
+                                            'Remove Everything',
+                                            style: GoogleFonts.quicksand(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 15,
+                                                color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -183,14 +136,6 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                       borderRadius: const BorderRadius.vertical(
                         top: Radius.circular(15),
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
                     ),
                     child: const Center(
                       child: Icon(Icons.keyboard_arrow_up),
@@ -231,60 +176,6 @@ class _ARViewWidgetState extends State<ARViewWidget> {
       arAnchorManager!.removeAnchor(anchor);
     }
     anchors = [];
-  }
-
-  Future<void> onTakeScreenshot() async {
-    var image = await arSessionManager!.snapshot();
-    await showDialog(
-        context: context,
-        builder: (_) => Dialog(
-          child: Screenshot(
-            controller: screenshotController,
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: image, fit: BoxFit.cover)
-              ),
-            ),
-          )
-        ));
-
-    final path = (await getApplicationDocumentsDirectory ()).path;
-    String fileName = "image.png";
-    screenshotController.captureAndSave(
-        path,
-        fileName:fileName
-    );
-    String imagePath = '$path/image.png';
-    File imageFile = File(imagePath);
-    List<int> imageBytes = imageFile.readAsBytesSync();
-    img.Image im = img.decodeImage(imageBytes)!;
-
-    // img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
-    var pred = _classifier.predict(im);
-    print(pred);
-
-    Widget okButton = TextButton(
-      child: const Text("OK"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-    AlertDialog alert = AlertDialog(
-      title: const Text("Here's the Result"),
-      content: Text(pred.toString()),
-      actions: [
-        okButton,
-      ],
-    );
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-    // setState(() {
-    //   this.category = pred as Category?;
-    // });
   }
 
   Future<void> onPlaneOrPointTapped(
