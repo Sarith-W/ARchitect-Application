@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../home.dart';
+
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({Key? key}) : super(key: key);
   @override
@@ -28,11 +30,19 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ],
-      title: Text("ARCHITECT",
-          style: GoogleFonts.montserrat(
-            fontWeight: FontWeight.w800,
-            fontSize: 20,
-          )),
+      title: GestureDetector(
+        onTap: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Home()),
+          );
+        },
+        child: Text("ARCHITECT",
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w800,
+              fontSize: 20,
+            )),
+      ),
       centerTitle: true,
       foregroundColor: Colors.black,
       backgroundColor: Colors.white,

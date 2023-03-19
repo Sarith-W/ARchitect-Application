@@ -77,7 +77,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                           child: Column(
                             children: [
                               Container(
-                                margin: const EdgeInsets.only(top: 20),
+                                margin: const EdgeInsets.only(top: 20, bottom: 10),
                                 height: 50,
                                 width: 320,
                                 child: FloatingActionButton.extended(
@@ -216,12 +216,40 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     await showDialog(
         context: context,
         builder: (_) => Dialog(
-            child: Screenshot(
-              controller: screenshotController,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(image: image, fit: BoxFit.cover)
-                ),
+            child: Container(
+              height: 500,
+              child: ListView(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    height: 30,
+                    child: Text(
+                        "A Preview",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      "Tap anywhere outside to see the results",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Screenshot(
+                    controller: screenshotController,
+                    child: Container(
+                      height: 500,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(image: image, fit: BoxFit.cover)
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )
         ));
@@ -241,28 +269,52 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     var pred = _classifier.predict(im);
     print(pred);
 
-    Widget okButton = TextButton(
-      child: const Text("OK"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-    AlertDialog alert = AlertDialog(
-      title: const Text("Here's the Result"),
-      content: Text(pred.toString()),
-      actions: [
-        okButton,
-      ],
-    );
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
+      builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        title: const Center(
+          child: Text(
+            "Here's the Result",
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        content: Text(
+            pred.toString()
+        ),
+        actions: [
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+              ),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
-    // setState(() {
-    //   this.category = pred as Category?;
-    // });
   }
 
   Future<void> onPlaneOrPointTapped(
