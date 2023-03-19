@@ -8,7 +8,6 @@ import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
 import 'package:ar_flutter_plugin/models/ar_anchor.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,11 +33,11 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   ARAnchorManager? arAnchorManager;
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
-  String currentObjectUri = "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+  String currentObjectUri =
+      "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+
   ScreenshotController screenshotController = ScreenshotController();
   late Classifier _classifier;
-  img.Image? fox;
-  Category? category;
 
   @override
   void initState() {
@@ -77,11 +76,13 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                           child: Column(
                             children: [
                               Container(
-                                margin: const EdgeInsets.only(top: 20, bottom: 10),
+                                margin:
+                                    const EdgeInsets.only(top: 20, bottom: 10),
                                 height: 50,
                                 width: 320,
                                 child: FloatingActionButton.extended(
-                                  label: const Text('Rate the Furniture Arrangement'),
+                                  label: const Text(
+                                      'Rate the Furniture Arrangement'),
                                   backgroundColor: Colors.black,
                                   icon: const Icon(
                                     Icons.table_bar_rounded,
@@ -212,64 +213,61 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   }
 
   Future<void> onTakeScreenshot() async {
-    var image = await arSessionManager!.snapshot();
+    var image = await arSessionManager?.snapshot();
+    if (image == null) return;
+
     await showDialog(
-        context: context,
-        builder: (_) => Dialog(
-            child: Container(
-              height: 500,
-              child: ListView(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    height: 30,
-                    child: Text(
-                        "A Preview",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                    ),
-                    ),
+      context: context,
+      builder: (_) => Dialog(
+        child: SizedBox(
+          height: 500,
+          child: ListView(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                height: 30,
+                child: Text(
+                  "A Preview",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      "Tap anywhere outside to see the results",
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Screenshot(
-                    controller: screenshotController,
-                    child: Container(
-                      height: 500,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(image: image, fit: BoxFit.cover)
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            )
-        ));
-
-    final path = (await getApplicationDocumentsDirectory ()).path;
-    String fileName = "image.png";
-    screenshotController.captureAndSave(
-        path,
-        fileName:fileName
+              const Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: Text(
+                  "Tap outside to see the results",
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Screenshot(
+                controller: screenshotController,
+                child: Container(
+                  height: 500,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(image: image, fit: BoxFit.cover)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
-    String imagePath = '$path/image.png';
-    File imageFile = File(imagePath);
-    List<int> imageBytes = imageFile.readAsBytesSync();
-    img.Image im = img.decodeImage(imageBytes)!;
 
-    // img.Image imageInput = img.decodeImage(_image!.readAsBytesSync())!;
-    var pred = _classifier.predict(im);
-    print(pred);
+    final path = (await getApplicationDocumentsDirectory()).path;
+    String fileName = "image.png";
+    final imagePath = '$path/image.png';
 
-    showDialog(
+    screenshotController.captureAndSave(path, fileName: fileName);
+    final imageFile = File(imagePath);
+
+    final pred =
+        _classifier.predict(img.decodeImage(imageFile.readAsBytesSync())!);
+
+    await showDialog(
       context: context,
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(
@@ -285,9 +283,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
             ),
           ),
         ),
-        content: Text(
-            pred.toString()
-        ),
+        content: Text(pred.toString()),
         actions: [
           SizedBox(
             width: double.infinity,
@@ -344,7 +340,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     }
   }
 
-  Widget buildOption(String objectUrl, String imageUrl) {
+  Widget buildOption(String objectUrl, String imagePath) {
     return Padding(
       padding: const EdgeInsets.only(right: 5.0),
       child: GestureDetector(
@@ -354,8 +350,8 @@ class _ARViewWidgetState extends State<ARViewWidget> {
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-            imageUrl,
+          child: Image.asset(
+            imagePath,
             width: 100,
             height: 100,
           ),
