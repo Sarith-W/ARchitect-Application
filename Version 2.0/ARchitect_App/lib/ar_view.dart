@@ -100,23 +100,23 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                     child: Row(
                                       children: [
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa1.glb",
+                                          "https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/models/sofa1.glb",
                                           "assets/images/sofa1Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa2.glb",
+                                          "https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/models/sofa2.glb",
                                           "assets/images/sofa2Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa3.glb",
+                                          "https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/models/sofa3.glb",
                                           "assets/images/sofa3Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa4.glb",
+                                          "https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/models/sofa4.glb",
                                           "assets/images/sofa4Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa5.glb",
+                                          "https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/models/sofa5.glb",
                                           "assets/images/sofa5Img.jpg",
                                         ),
                                       ],
