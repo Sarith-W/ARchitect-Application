@@ -34,7 +34,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
   String currentObjectUri =
-      "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb";
+      "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa1.glb";
 
   ScreenshotController screenshotController = ScreenshotController();
   late Classifier _classifier;
@@ -100,24 +100,24 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                     child: Row(
                                       children: [
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer.glb",
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_drawer_img.PNG",
+                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa1.glb",
+                                          "assets/images/sofa1Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table.glb",
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/wood_table_img.PNG",
+                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa2.glb",
+                                          "assets/images/sofa2Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_chair.glb",
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_chair_img.PNG",
+                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa3.glb",
+                                          "assets/images/sofa3Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_couch.glb",
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_couch_img.PNG",
+                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa4.glb",
+                                          "assets/images/sofa4Img.jpg",
                                         ),
                                         buildOption(
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_drawer.glb",
-                                          "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/modern_drawer_img.PNG",
+                                          "https://raw.githubusercontent.com/Sarith-W/ARchitect-Application/main/models/sofa5.glb",
+                                          "assets/images/sofa5Img.jpg",
                                         ),
                                       ],
                                     ),
@@ -195,8 +195,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     this.arSessionManager!.onInitialize(
           showFeaturePoints: false,
           showPlanes: true,
-          customPlaneTexturePath:
-              "https://raw.githubusercontent.com/Dinal-Jayathilake/temp/main/triangle.PNG",
+          customPlaneTexturePath: "assets/images/triangle.PNG",
           showWorldOrigin: false,
           handlePans: true,
           handleRotation: true,
