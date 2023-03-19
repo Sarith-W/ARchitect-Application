@@ -4,12 +4,8 @@ import 'package:architect_app/welcomePage.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import 'home.dart';
-import 'main.dart';
 
 class SignUpPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -39,17 +35,46 @@ class SignUpPage extends StatelessWidget {
       );
     } on FirebaseAuthException catch (e){
       print(e);
-      Widget okButton = TextButton(
-        child: const Text("OK"),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      );
       AlertDialog alert = AlertDialog(
-        title: const Text("Oops..."),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        title: const Center(
+          child: Text(
+            "Oops...",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
         content: Text(e.message!),
         actions: [
-          okButton,
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+              ),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       );
       showDialog(
@@ -80,17 +105,46 @@ class SignUpPage extends StatelessWidget {
       );
     }on FirebaseAuthException catch (e){
       print(e);
-      Widget okButton = TextButton(
-        child: const Text("OK"),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      );
       AlertDialog alert = AlertDialog(
-        title: const Text("Oops..."),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        title: const Center(
+          child: Text(
+            "Oops...",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
         content: Text(e.message!),
         actions: [
-          okButton,
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+              ),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       );
       showDialog(
