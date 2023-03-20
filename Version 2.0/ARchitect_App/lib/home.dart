@@ -50,7 +50,7 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Hello.',
+                      'Hello!',
                       style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 25.0,

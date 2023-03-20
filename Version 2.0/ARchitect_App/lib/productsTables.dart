@@ -3,6 +3,8 @@ import 'package:architect_app/TopBar/side_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'customizePage.dart';
+
 class ProductsTables extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -42,47 +44,82 @@ class ProductsTables extends StatelessWidget {
                       ),
                       const SizedBox(height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Customize("assets/images/table1Img.png"),
+                            ),
+                          );
+                        },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
+                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table1Img.png?raw=true',
                             'Table 1'),
                       ),
                       const SizedBox(height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Customize("assets/images/table2Img.png"),
+                            ),
+                          );
+                        },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
+                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table2Img.png?raw=true',
                             'Table 2'),
                       ),
                       const SizedBox(height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Customize("assets/images/table3Img.png"),
+                            ),
+                          );
+                        },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
+                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table3Img.png?raw=true',
                             'Table 3'),
                       ),
                       const SizedBox(height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Customize("assets/images/table4Img.png"),
+                            ),
+                          );
+                        },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
+                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table4Img.png?raw=true',
                             'Table 4'),
                       ),
                       const SizedBox(height: 15.0),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Customize("assets/images/table5Img.png"),
+                            ),
+                          );
+                        },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
+                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table5Img.png?raw=true',
                             'Table 5'),
                       ),
                     ],

@@ -121,23 +121,23 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table1.glb",
-                                          "assets/images/table1Img.jpg",
+                                          "assets/images/table1Img.png",
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table2.glb",
-                                          "assets/images/table2Img.jpg",
+                                          "assets/images/table2Img.png",
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table3.glb",
-                                          "assets/images/table3Img.jpg",
+                                          "assets/images/table3Img.png",
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table4.glb",
-                                          "assets/images/table4Img.jpg",
+                                          "assets/images/table4Img.png",
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table5.glb",
-                                          "assets/images/table5Img.jpg",
+                                          "assets/images/table5Img.png",
                                         ),
                                       ],
                                     ),
