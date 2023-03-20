@@ -1,168 +1,79 @@
-import 'package:architect_app/TopBar/app_bar.dart';
-import 'package:architect_app/TopBar/side_drawer.dart';
-import 'package:architect_app/productsSofaSets.dart';
-import 'package:architect_app/productsTables.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'ar_view.dart';
+import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
+import 'TopBar/app_bar.dart';
+import 'TopBar/side_drawer.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Home({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 3.1;
-
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Scaffold(
-          key: _scaffoldKey,
-          appBar: const AppBarWidget(),
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25.0,
+  Widget buildWelcomeCard() {
+    return Container(
+      width: double.infinity,
+      height: 200,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  bottomLeft: Radius.circular(20.0),
+                ),
               ),
-              child: Container(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CarouselSlider(
-                      items: [
-                        Container(
-                          margin: EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: NetworkImage("https://www.apple.com/v/augmented-reality/c/images/meta/og__cjuf93da35zm_large.png?202302021323"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: NetworkImage("https://devabit.com/uploads/ar-furniture-apps-by-devabit.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: NetworkImage("https://www.cnet.com/a/img/resize/72bb2d5d82dfecb7e89e38c4a7982f6fa6f615df/hub/2020/08/25/2cc71f28-dd02-41f4-ab0e-59a54efa2f1d/amazon-rooom-decorator-hi-res.jpg?auto=webp&fit=crop&height=675&width=1200"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: NetworkImage("https://www.furnituretoday.com/wp-content/uploads/2021/02/856x475_featured.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                      options: CarouselOptions(
-                        height: 180.0,
-                        enlargeCenterPage: true,
-                        autoPlay: true,
-                        aspectRatio: 16 / 9,
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enableInfiniteScroll: true,
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        viewportFraction: 0.8,
-                      ),
-                    ),
-                    // Container(
-                    //   height: 150,
-                    //   child: buildImageStack(
-                    //       context,
-                    //       sizedBoxHeight,
-                    //       'https://i.pinimg.com/originals/0d/17/af/0d17af5da1ccbe2b01bdf146f6b2c3b1.gif',
-                    //       ''),
-                    // ),
-                    const SizedBox(height: 10.0),
+                  children: [
                     const Text(
-                      "Our Products",
+                      'Hello.',
                       style: TextStyle(
-                        fontFamily: 'Itim',
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        fontFamily: 'Montserrat',
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        overflow: TextOverflow.fade,
                       ),
                     ),
-                    const SizedBox(height: 15.0),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductsSofaSets(),
-                            ));
-                      },
-                      child: buildImageStack(
-                          context,
-                          sizedBoxHeight,
-                          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                          'Sofa'),
-                    ),
-                    const SizedBox(height: 15.0),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductsTables(),
-                            ));
-                      },
-                      child: buildImageStack(
-                          context,
-                          sizedBoxHeight,
-                          'http://cdn.shopify.com/s/files/1/0590/7431/4421/products/8720286974025_m_en_hd_1_9f38296b-4d0b-4435-81ad-0ed615bad3ac.jpg?v=1673842086',
-                          'Table'),
-                    ),
-                    const SizedBox(height: 15.0),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ARViewWidget()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shadowColor: const Color.fromARGB(255, 120, 112, 112),
-                          elevation: 2,
-                          disabledForegroundColor:
-                              Colors.black.withOpacity(0.38),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
-                          ),
+                    const SizedBox(height: 10.0),
+                    Expanded(
+                      child: Marquee(
+                        text:
+                            "Welcome to ARchitect! Our app is designed to help you with your renovation problems, and our user-friendly interface and helpful resources are here to support you every step of the way. Explore all the features and let us know how we can make your experience even better. Thanks for choosing our app, and happy renovating!",
+                        style: const TextStyle(
+                          fontFamily: 'Quicksand',
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
                         ),
-                        child: Text(
-                          "View in AR",
-                          style: GoogleFonts.quicksand(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: Colors.white,
-                          ),
-                        ),
+                        scrollAxis: Axis.vertical,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        blankSpace: 20.0,
+                        velocity: 20.0,
+                        pauseAfterRound: const Duration(seconds: 1),
+                        startPadding: 10.0,
+                        accelerationDuration: const Duration(seconds: 1),
+                        accelerationCurve: Curves.linear,
+                        decelerationDuration: const Duration(milliseconds: 500),
+                        decelerationCurve: Curves.easeOut,
                       ),
                     ),
                   ],
@@ -170,46 +81,82 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-          drawer: const SideDrawerWidget()),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/textWidgetImg.gif'),
+                  fit: BoxFit.fitWidth,
+                ),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20.0),
+                  bottomRight: Radius.circular(20.0),
+                ),
+                border: null,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget buildImageStack(BuildContext context, double sizedBoxHeight,
-      String imageUrl, String text) {
-    return Stack(
-      children: <Widget>[
-        SizedBox(
-          width: double.infinity,
-          height: sizedBoxHeight,
-          child: Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  return const Center(child: Text('Image Not Found'));
-                },
-              ),
+  Widget buildCarouselItem(String title, String assetName) => Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          image: DecorationImage(
+            image: AssetImage('assets/images/$assetName'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 50.0,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
             ),
           ),
         ),
-        Container(
-          height: sizedBoxHeight,
-          alignment: Alignment.center,
-          child: Center(
-            child: Text(
-              text,
-              style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.w800,
-                fontSize: 50,
-                color: Colors.white,
+      );
+
+  @override
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: _scaffoldKey,
+          appBar: const AppBarWidget(),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  buildWelcomeCard(),
+                  const SizedBox(height: 20.0),
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 300,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.2,
+                      viewportFraction: 0.8,
+                      aspectRatio: 16 / 9,
+                    ),
+                    items: [
+                      buildCarouselItem('TABLES', 'carouselOption1.jpg'),
+                      buildCarouselItem('SOFAS', 'carouselOption2.webp'),
+                      buildCarouselItem('AR', 'carouselOption3.PNG'),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
+          drawer: const SideDrawerWidget(),
         ),
-      ],
-    );
-  }
+      );
 }
