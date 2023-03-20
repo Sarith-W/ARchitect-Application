@@ -1,17 +1,23 @@
+import 'package:architect_app/ar_view.dart';
+import 'package:architect_app/color_recom.dart';
+import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+
 import 'TopBar/app_bar.dart';
 import 'TopBar/side_drawer.dart';
+import 'productsSofaSets.dart';
+import 'productsTables.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Home({Key? key}) : super(key: key);
 
-  Widget buildWelcomeCard() {
+  Widget buildWelcomeCard(double screenHeight) {
     return Container(
       width: double.infinity,
-      height: 200,
+      height: screenHeight * 0.28,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.0),
@@ -102,7 +108,22 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget buildCarouselItem(String title, String assetName) => Container(
+  Widget buildCarouselItem(
+      String title, String assetName, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Widget destination = const ARViewWidget();
+        if (title == 'TABLES') {
+          destination = ProductsTables();
+        } else if (title == 'SOFAS') {
+          destination = ProductsSofaSets();
+        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => destination),
+        );
+      },
+      child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           image: DecorationImage(
@@ -121,42 +142,81 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
-      );
+      ),
+    );
+  }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          key: _scaffoldKey,
-          appBar: const AppBarWidget(),
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  buildWelcomeCard(),
-                  const SizedBox(height: 20.0),
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 300,
-                      autoPlay: true,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.2,
-                      viewportFraction: 0.8,
-                      aspectRatio: 16 / 9,
-                    ),
-                    items: [
-                      buildCarouselItem('TABLES', 'carouselOption1.jpg'),
-                      buildCarouselItem('SOFAS', 'carouselOption2.webp'),
-                      buildCarouselItem('AR', 'carouselOption3.PNG'),
-                    ],
+  Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: const AppBarWidget(),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                buildWelcomeCard(screenHeight),
+                SizedBox(height: screenHeight * 0.03),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: screenHeight * 0.4,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    enlargeFactor: 0.2,
+                    viewportFraction: 0.8,
+                    aspectRatio: 16 / 9,
                   ),
-                ],
-              ),
+                  items: [
+                    buildCarouselItem('TABLES', 'carouselOption1.jpg', context),
+                    buildCarouselItem('SOFAS', 'carouselOption2.webp', context),
+                    buildCarouselItem('AR', 'carouselOption3.PNG', context),
+                  ],
+                ),
+                SizedBox(height: screenHeight * 0.03),
+                SizedBox(
+                  width: double.infinity,
+                  height: screenHeight * 0.065,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await availableCameras().then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => CameraPage(cameras: value),
+                          ),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shadowColor: const Color.fromARGB(255, 120, 112, 112),
+                      elevation: 2,
+                      disabledForegroundColor: Colors.black.withOpacity(0.38),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                    ),
+                    child: Text(
+                      "Check Color Suggestions",
+                      style: TextStyle(
+                          fontFamily: 'Quicksand',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          drawer: const SideDrawerWidget(),
         ),
-      );
+        drawer: const SideDrawerWidget(),
+      ),
+    );
+  }
 }
