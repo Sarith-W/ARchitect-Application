@@ -48,14 +48,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table1Img.PNG"),
+                              builder: (context) => Customize("assets/images/table1Img.png"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'assets/images/table1Img.PNG',
+                            'assets/images/table1Img.png',
                             'Table 1'),
                       ),
                       const SizedBox(height: 15.0),
@@ -64,14 +64,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table2Img.PNG"),
+                              builder: (context) => Customize("assets/images/table2Img.png"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'assets/images/table2Img.PNG',
+                            'assets/images/table2Img.png',
                             'Table 2'),
                       ),
                       const SizedBox(height: 15.0),
@@ -80,14 +80,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table3Img.PNG"),
+                              builder: (context) => Customize("assets/images/table3Img.png"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'assets/images/table3Img.PNG',
+                            'assets/images/table3Img.png',
                             'Table 3'),
                       ),
                       const SizedBox(height: 15.0),
@@ -96,14 +96,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table4Img.PNG"),
+                              builder: (context) => Customize("assets/images/table4Img.png"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'assets/images/table4Img.PNG',
+                            'assets/images/table4Img.png',
                             'Table 4'),
                       ),
                       const SizedBox(height: 15.0),
@@ -112,14 +112,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table5Img.PNG"),
+                              builder: (context) => Customize("assets/images/table5Img.png"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'assets/images/table5Img.jpg',
+                            'assets/images/table5Img.png',
                             'Table 5'),
                       ),
                     ],
