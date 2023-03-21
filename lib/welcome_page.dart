@@ -1,16 +1,15 @@
-import 'package:architect_app/signInPage.dart';
-import 'package:architect_app/signUpPage.dart';
-import 'package:architect_app/splashScreenForLogin.dart';
+import 'package:architect_app/sign_in.dart';
+import 'package:architect_app/sign_up.dart';
+import 'package:architect_app/splash_screen_login.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  WelcomePage({Key? key}) : super(key: key);
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
@@ -45,10 +44,9 @@ class WelcomePage extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: const Offset(0,3),
+                        offset: const Offset(0, 3),
                       )
-                    ]
-                ),
+                    ]),
                 child: Column(
                   children: [
                     Container(
@@ -76,22 +74,23 @@ class WelcomePage extends StatelessWidget {
                               backgroundColor: Colors.black87,
                               foregroundColor: Colors.white,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                               textStyle: const TextStyle(
                                 fontFamily: 'Itim',
                                 fontSize: 17,
-                              )
-                          ),
-                          onPressed: (){
+                              )),
+                          onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignInPage(key: const Key('signInPage'))),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SignInPage(key: const Key('signInPage'))),
                             );
                           },
                           child: const Text("Sign In"),
-                        )
-                    ),
+                        )),
                     Container(
                         margin: const EdgeInsets.only(top: 20),
                         height: 60,
@@ -101,22 +100,23 @@ class WelcomePage extends StatelessWidget {
                               backgroundColor: Colors.black87,
                               foregroundColor: Colors.white,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                               textStyle: const TextStyle(
                                 fontFamily: 'Itim',
                                 fontSize: 17,
-                              )
-                          ),
-                          onPressed: (){
+                              )),
+                          onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignUpPage(key: const Key('signUpPage'))),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SignUpPage(key: const Key('signUpPage'))),
                             );
                           },
                           child: const Text("Sign Up"),
-                        )
-                    ),
+                        )),
                     Container(
                         margin: const EdgeInsets.only(top: 20),
                         height: 60,
@@ -126,25 +126,25 @@ class WelcomePage extends StatelessWidget {
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.black,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                               textStyle: const TextStyle(
                                 fontFamily: 'Itim',
                                 fontSize: 17,
-                              )
-                          ),
-                          onPressed: (){
+                              )),
+                          onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SplashLogin(key: Key('splash'))),
                             );
                           },
                           child: const Text("Continue as Guest"),
-                        )
-                    ),
+                        )),
                   ],
-                )
-            )
+                ))
           ],
         ),
       ),

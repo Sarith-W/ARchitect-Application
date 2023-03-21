@@ -7,8 +7,8 @@ import 'package:marquee/marquee.dart';
 
 import 'TopBar/app_bar.dart';
 import 'TopBar/side_drawer.dart';
-import 'productsSofaSets.dart';
-import 'productsTables.dart';
+import 'sofa_sets.dart';
+import 'tables.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -201,7 +201,7 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Check Color Suggestions",
                       style: TextStyle(
                           fontFamily: 'Quicksand',

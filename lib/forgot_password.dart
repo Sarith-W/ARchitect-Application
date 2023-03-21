@@ -1,31 +1,31 @@
-import 'package:architect_app/signInPage.dart';
-import 'package:architect_app/welcomePage.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:architect_app/sign_in.dart';
+import 'package:architect_app/welcome_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   ForgotPasswordPage({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
-  @override
   void dispose() {
     emailController.dispose();
   }
 
-  Future resetPassword(BuildContext context) async{
+  Future resetPassword(BuildContext context) async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(
-          email: emailController.text.trim()
-      );
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text.trim());
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SignInPage(key: const Key('signInPage'))),
+        MaterialPageRoute(
+            builder: (context) => SignInPage(key: const Key('signInPage'))),
       );
 
       AlertDialog alert = AlertDialog(
@@ -43,7 +43,7 @@ class ForgotPasswordPage extends StatelessWidget {
             ),
           ),
         ),
-        content: Text("Password Reset Email Sent"),
+        content: const Text("Password Reset Email Sent"),
         actions: [
           SizedBox(
             width: double.infinity,
@@ -76,7 +76,7 @@ class ForgotPasswordPage extends StatelessWidget {
           return alert;
         },
       );
-    }on FirebaseAuthException catch(e){
+    } on FirebaseAuthException catch (e) {
       print(e);
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
@@ -145,11 +145,10 @@ class ForgotPasswordPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => WelcomePage()),
+                  MaterialPageRoute(builder: (context) => WelcomePage()),
                 );
               },
               child: Container(
@@ -159,8 +158,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   height: 200,
                   width: 200,
                 ),
-              )
-          ),
+              )),
           Container(
               margin: const EdgeInsets.only(top: 300, left: 27),
               height: 360,
@@ -173,10 +171,9 @@ class ForgotPasswordPage extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: const Offset(0,3),
+                      offset: const Offset(0, 3),
                     )
-                  ]
-              ),
+                  ]),
               child: Column(
                 children: [
                   Container(
@@ -189,45 +186,44 @@ class ForgotPasswordPage extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Itim',
                           fontSize: 25,
-
                           color: Colors.black,
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 40),
-                    height: 70,
-                    width: 300,
-                    child: Form(
-                      key: formKey,
-                      child: TextFormField(
-                        controller: emailController,
-                        cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          hintText: "Ex: abc@gmail.com",
-                          filled: true,
-                          fillColor: Colors.white,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.black87, width: 2),
-                            borderRadius: BorderRadius.circular(20),
+                      margin: const EdgeInsets.only(top: 40),
+                      height: 70,
+                      width: 300,
+                      child: Form(
+                        key: formKey,
+                        child: TextFormField(
+                          controller: emailController,
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            hintText: "Ex: abc@gmail.com",
+                            filled: true,
+                            fillColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Colors.black87, width: 2),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            border: OutlineInputBorder(
+                                // borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: "Enter your email",
+                            labelStyle: const TextStyle(
+                              color: Color(0xFF4E342E),
+                            ),
                           ),
-                          border: OutlineInputBorder(
-                            // borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          labelText: "Enter your email",
-                          labelStyle: const TextStyle(
-                            color: Color(0xFF4E342E),
-                          ),
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (email) =>
+                              email != null && !EmailValidator.validate(email)
+                                  ? 'Enter a valid email'
+                                  : null,
                         ),
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (email) =>
-                        email != null && !EmailValidator.validate(email)
-                            ? 'Enter a valid email' : null,
-                      ),
-                    )
-                  ),
+                      )),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     height: 50,
@@ -261,8 +257,7 @@ class ForgotPasswordPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
-          )
+              ))
         ],
       ),
     );

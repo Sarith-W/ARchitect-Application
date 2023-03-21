@@ -1,27 +1,26 @@
-import 'package:architect_app/signUpPage.dart';
-import 'package:architect_app/splashScreenForLogin.dart';
-import 'package:architect_app/welcomePage.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:architect_app/sign_up.dart';
+import 'package:architect_app/splash_screen_login.dart';
+import 'package:architect_app/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'forgotPassword.dart';
-
+import 'forgot_password.dart';
 
 class SignInPage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   SignInPage({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  void dispose(){
+  void dispose() {
     emailController.dispose();
     passwordController.dispose();
   }
 
-  Future signIn(BuildContext context) async{
+  Future signIn(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -29,9 +28,10 @@ class SignInPage extends StatelessWidget {
       );
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+        MaterialPageRoute(
+            builder: (context) => const SplashLogin(key: Key('splash'))),
       );
-    } on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       print(e);
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
@@ -86,11 +86,11 @@ class SignInPage extends StatelessWidget {
 
   Future signInWithGoogle(BuildContext context) async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn(
-          scopes: <String>["email"]).signIn();
+      final GoogleSignInAccount? googleUser =
+          await GoogleSignIn(scopes: <String>["email"]).signIn();
 
-      final GoogleSignInAuthentication googleAuth = await googleUser!
-          .authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -99,9 +99,10 @@ class SignInPage extends StatelessWidget {
       FirebaseAuth.instance.signInWithCredential(credential);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+        MaterialPageRoute(
+            builder: (context) => const SplashLogin(key: Key('splash'))),
       );
-    }on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       print(e);
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
@@ -157,12 +158,12 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF4E342E),
+          backgroundColor: const Color(0xFF4E342E),
           toolbarHeight: 10,
         ),
         body: ListView(
@@ -183,7 +184,7 @@ class SignInPage extends StatelessWidget {
                       width: double.infinity,
                     ),
                     GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -197,8 +198,7 @@ class SignInPage extends StatelessWidget {
                             height: 200,
                             width: 200,
                           ),
-                        )
-                    )
+                        ))
                   ],
                 ),
                 Container(
@@ -211,10 +211,9 @@ class SignInPage extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: const Offset(0,3),
+                            offset: const Offset(0, 3),
                           )
-                        ]
-                    ),
+                        ]),
                     height: 450,
                     width: 370,
                     child: Form(
@@ -238,7 +237,8 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                            margin: const EdgeInsets.only(
+                                top: 30, left: 30, right: 30),
                             height: 55,
                             width: 300,
                             child: TextFormField(
@@ -249,13 +249,13 @@ class SignInPage extends StatelessWidget {
                                 filled: true,
                                 fillColor: Colors.white,
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderSide: const BorderSide(
+                                      color: Colors.black87, width: 2),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 border: OutlineInputBorder(
-                                  // borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(20)
-                                ),
+                                    // borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(20)),
                                 labelText: "Enter your email",
                                 labelStyle: const TextStyle(
                                   color: Color(0xFF4E342E),
@@ -264,7 +264,8 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                            margin: const EdgeInsets.only(
+                                top: 30, left: 30, right: 30),
                             height: 55,
                             width: 300,
                             child: TextFormField(
@@ -276,13 +277,13 @@ class SignInPage extends StatelessWidget {
                                 filled: true,
                                 fillColor: Colors.white,
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderSide: const BorderSide(
+                                      color: Colors.black87, width: 2),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 border: OutlineInputBorder(
-                                  // borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(20)
-                                ),
+                                    // borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(20)),
                                 labelText: "Enter the password",
                                 labelStyle: const TextStyle(
                                   color: Color(0xFF4E342E),
@@ -298,15 +299,18 @@ class SignInPage extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.black87,
                                 ),
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ForgotPasswordPage(key: const Key('ForgotPasswordPage'))),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ForgotPasswordPage(
+                                                key: const Key(
+                                                    'ForgotPasswordPage'))),
                                   );
                                 },
                                 child: const Text("Forgot Password?"),
-                              )
-                          ),
+                              )),
                           Container(
                               margin: const EdgeInsets.only(top: 15),
                               height: 45,
@@ -316,19 +320,18 @@ class SignInPage extends StatelessWidget {
                                     backgroundColor: Colors.black87,
                                     foregroundColor: Colors.white,
                                     shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
                                     ),
                                     textStyle: const TextStyle(
                                       fontFamily: 'Itim',
                                       fontSize: 17,
-                                    )
-                                ),
-                                onPressed: (){
+                                    )),
+                                onPressed: () {
                                   signIn(context);
                                 },
                                 child: const Text("Sign In"),
-                              )
-                          ),
+                              )),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             height: 45,
@@ -340,7 +343,8 @@ class SignInPage extends StatelessWidget {
                                 signInWithGoogle(context);
                               },
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
                           ),
@@ -352,19 +356,20 @@ class SignInPage extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.black87,
                                 ),
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => SignUpPage(key: const Key('signUpPage'))),
+                                    MaterialPageRoute(
+                                        builder: (context) => SignUpPage(
+                                            key: const Key('signUpPage'))),
                                   );
                                 },
-                                child: const Text("Don't have an account? Register"),
-                              )
-                          ),
+                                child: const Text(
+                                    "Don't have an account? Register"),
+                              )),
                         ],
                       ),
-                    )
-                )
+                    ))
               ],
             )
           ],

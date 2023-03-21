@@ -1,4 +1,4 @@
-import 'package:architect_app/splashScreenForSignOut.dart';
+import 'package:architect_app/splash_screen_signout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +26,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
       title: GestureDetector(
-        onTap: (){
+        onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Home()),

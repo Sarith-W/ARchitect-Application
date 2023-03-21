@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:architect_app/welcomePage.dart';
+import 'package:architect_app/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -17,9 +17,9 @@ class _SplashSignOutState extends State<SplashSignOut> {
 
     Timer(
       const Duration(seconds: 2),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
-            MaterialPageRoute(builder: (context) => WelcomePage()),
+        MaterialPageRoute(builder: (context) => WelcomePage()),
       ),
     );
   }
@@ -27,14 +27,17 @@ class _SplashSignOutState extends State<SplashSignOut> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [CircularProgressIndicator(), Text('Signing Out...')],
+            children: const [
+              CircularProgressIndicator(),
+              Text('Signing Out...')
+            ],
           ),
         ),
       ),

@@ -5,7 +5,8 @@ import 'ar_view.dart';
 
 class Customize extends StatefulWidget {
   final String path;
-  Customize(this.path);
+  const Customize(this.path, {super.key});
+
   @override
   State<Customize> createState() => _CustomizeState(path);
 }
@@ -56,9 +57,7 @@ class _CustomizeState extends State<Customize> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: 30,
                         height: 30,
@@ -72,9 +71,7 @@ class _CustomizeState extends State<Customize> {
                       width: 15,
                     ),
                     GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: 30,
                         height: 30,
@@ -88,9 +85,7 @@ class _CustomizeState extends State<Customize> {
                       width: 15,
                     ),
                     GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: 30,
                         height: 30,
@@ -104,9 +99,7 @@ class _CustomizeState extends State<Customize> {
                       width: 15,
                     ),
                     GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         width: 30,
                         height: 30,
@@ -119,7 +112,6 @@ class _CustomizeState extends State<Customize> {
                   ],
                 ),
               ),
-
               const SizedBox(
                 height: 35,
               ),
@@ -127,7 +119,6 @@ class _CustomizeState extends State<Customize> {
                 "Select a dimension",
                 style: TextStyle(fontSize: 20),
               ),
-
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
@@ -135,15 +126,6 @@ class _CustomizeState extends State<Customize> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      // ElevatedButton(onPressed: (){}, child: const Text("Length")),
-                      // const SizedBox(width: 10,),
-
-                      // ElevatedButton(onPressed: (){}, child: const Text("Width")),
-                      // const SizedBox(width: 10,),
-
-                      // ElevatedButton(onPressed: (){}, child: const Text("Hight")),
-                      // const SizedBox(width: 10,),
-
                       Expanded(
                         child: TextField(
                           keyboardType: TextInputType.number,
@@ -177,7 +159,6 @@ class _CustomizeState extends State<Customize> {
                   ),
                 ),
               ),
-
               const SizedBox(
                 height: 55,
               ),
@@ -188,7 +169,8 @@ class _CustomizeState extends State<Customize> {
                   onPressed: () async {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ARViewWidget()),
+                      MaterialPageRoute(
+                          builder: (context) => const ARViewWidget()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -200,7 +182,7 @@ class _CustomizeState extends State<Customize> {
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "View in AR",
                     style: TextStyle(
                         fontFamily: 'Quicksand',

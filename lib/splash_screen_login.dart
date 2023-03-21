@@ -16,9 +16,9 @@ class _SplashLoginState extends State<SplashLogin> {
 
     Timer(
       const Duration(seconds: 2),
-          () => Navigator.pushReplacement(
+      () => Navigator.pushReplacement(
         context,
-            MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
+        MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
       ),
     );
   }
@@ -26,14 +26,17 @@ class _SplashLoginState extends State<SplashLogin> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [CircularProgressIndicator(), Text('Welcome to ARchitect')],
+            children: const [
+              CircularProgressIndicator(),
+              Text('Welcome to ARchitect')
+            ],
           ),
         ),
       ),

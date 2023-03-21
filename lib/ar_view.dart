@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:ar_flutter_plugin/datatypes/config_planedetection.dart';
 import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
 import 'package:ar_flutter_plugin/datatypes/node_types.dart';
@@ -160,9 +162,9 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Icon(Icons.delete,
+                                          const Icon(Icons.delete,
                                               color: Colors.white),
-                                          SizedBox(width: 8.0),
+                                          const SizedBox(width: 8.0),
                                           Text(
                                             'Remove Everything',
                                             style: GoogleFonts.quicksand(
@@ -185,9 +187,9 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                   child: Container(
                     width: double.infinity,
                     height: 25,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: const BorderRadius.vertical(
+                      borderRadius: BorderRadius.vertical(
                         top: Radius.circular(15),
                       ),
                     ),
@@ -245,10 +247,10 @@ class _ARViewWidgetState extends State<ARViewWidget> {
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 height: 30,
-                child: Text(
+                child: const Text(
                   "A Preview",
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 20,
                     fontWeight: FontWeight.w900,

@@ -1,6 +1,8 @@
-import 'package:architect_app/signInPage.dart';
-import 'package:architect_app/splashScreenForLogin.dart';
-import 'package:architect_app/welcomePage.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:architect_app/sign_in.dart';
+import 'package:architect_app/splash_screen_login.dart';
+import 'package:architect_app/welcome_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,19 +10,17 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpPage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   SignUpPage({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  void dispose(){
+  void dispose() {
     emailController.dispose();
     passwordController.dispose();
   }
 
-  Future signUp(BuildContext context) async{
+  Future signUp(BuildContext context) async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
@@ -31,9 +31,10 @@ class SignUpPage extends StatelessWidget {
       );
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+        MaterialPageRoute(
+            builder: (context) => const SplashLogin(key: Key('splash'))),
       );
-    } on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       print(e);
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
@@ -88,11 +89,11 @@ class SignUpPage extends StatelessWidget {
 
   Future signUpWithGoogle(BuildContext context) async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn(
-          scopes: <String>["email"]).signIn();
+      final GoogleSignInAccount? googleUser =
+          await GoogleSignIn(scopes: <String>["email"]).signIn();
 
-      final GoogleSignInAuthentication googleAuth = await googleUser!
-          .authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -101,9 +102,10 @@ class SignUpPage extends StatelessWidget {
       FirebaseAuth.instance.signInWithCredential(credential);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SplashLogin(key: Key('splash'))),
+        MaterialPageRoute(
+            builder: (context) => const SplashLogin(key: Key('splash'))),
       );
-    }on FirebaseAuthException catch (e){
+    } on FirebaseAuthException catch (e) {
       print(e);
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
@@ -156,17 +158,15 @@ class SignUpPage extends StatelessWidget {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final sizedBoxHeight = (MediaQuery.of(context).size.height - 200) / 3.1;
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF4E342E),
+          backgroundColor: const Color(0xFF4E342E),
           toolbarHeight: 10,
         ),
         body: ListView(
@@ -187,13 +187,13 @@ class SignUpPage extends StatelessWidget {
                       width: double.infinity,
                     ),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WelcomePage()),
-                        );
-                      },
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WelcomePage()),
+                          );
+                        },
                         child: Container(
                           margin: const EdgeInsets.only(left: 105),
                           child: Image.asset(
@@ -201,8 +201,7 @@ class SignUpPage extends StatelessWidget {
                             height: 200,
                             width: 200,
                           ),
-                        )
-                    )
+                        ))
                   ],
                 ),
                 Container(
@@ -215,10 +214,9 @@ class SignUpPage extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: const Offset(0,3),
+                            offset: const Offset(0, 3),
                           )
-                        ]
-                    ),
+                        ]),
                     height: 475,
                     width: 370,
                     child: Form(
@@ -242,7 +240,8 @@ class SignUpPage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 40, left: 30, right: 30),
+                            margin: const EdgeInsets.only(
+                                top: 40, left: 30, right: 30),
                             height: 75,
                             width: 300,
                             child: TextFormField(
@@ -253,25 +252,28 @@ class SignUpPage extends StatelessWidget {
                                 filled: true,
                                 fillColor: Colors.white,
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderSide: const BorderSide(
+                                      color: Colors.black87, width: 2),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                ),
+                                    borderRadius: BorderRadius.circular(20)),
                                 labelText: "Enter your email",
                                 labelStyle: const TextStyle(
                                   color: Color(0xFF4E342E),
                                 ),
                               ),
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              validator: (email) =>
-                              email != null && !EmailValidator.validate(email)
-                                  ? 'Enter a valid email' : null,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              validator: (email) => email != null &&
+                                      !EmailValidator.validate(email)
+                                  ? 'Enter a valid email'
+                                  : null,
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 20, left: 30, right: 30),
+                            margin: const EdgeInsets.only(
+                                top: 20, left: 30, right: 30),
                             height: 75,
                             width: 300,
                             child: TextFormField(
@@ -283,21 +285,24 @@ class SignUpPage extends StatelessWidget {
                                 filled: true,
                                 fillColor: Colors.white,
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(color: Colors.black87, width: 2),
+                                  borderSide: const BorderSide(
+                                      color: Colors.black87, width: 2),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 border: OutlineInputBorder(
-                                  // borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(20)
-                                ),
+                                    // borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(20)),
                                 labelText: "Enter a new password",
                                 labelStyle: const TextStyle(
                                   color: Color(0xFF4E342E),
                                 ),
                               ),
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              validator: (value) => value != null && value.length < 6
-                                  ? "Enter a minimum of 6 characters" : null,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              validator: (value) =>
+                                  value != null && value.length < 6
+                                      ? "Enter a minimum of 6 characters"
+                                      : null,
                             ),
                           ),
                           Container(
@@ -309,19 +314,18 @@ class SignUpPage extends StatelessWidget {
                                     backgroundColor: Colors.black87,
                                     foregroundColor: Colors.white,
                                     shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
                                     ),
                                     textStyle: const TextStyle(
                                       fontFamily: 'Itim',
                                       fontSize: 17,
-                                    )
-                                ),
-                                onPressed: (){
+                                    )),
+                                onPressed: () {
                                   signUp(context);
                                 },
                                 child: const Text("Sign Up"),
-                              )
-                          ),
+                              )),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             height: 45,
@@ -333,7 +337,8 @@ class SignUpPage extends StatelessWidget {
                                 signUpWithGoogle(context);
                               },
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
                           ),
@@ -345,19 +350,20 @@ class SignUpPage extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.black87,
                                 ),
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => SignInPage(key: const Key('signInPage'))),
+                                    MaterialPageRoute(
+                                        builder: (context) => SignInPage(
+                                            key: const Key('signInPage'))),
                                   );
                                 },
-                                child: const Text("Already have an account? Sign in"),
-                              )
-                          ),
+                                child: const Text(
+                                    "Already have an account? Sign in"),
+                              )),
                         ],
                       ),
-                    )
-                )
+                    ))
               ],
             )
           ],

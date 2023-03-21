@@ -1,9 +1,9 @@
 import 'package:architect_app/ar_view.dart';
 import 'package:architect_app/color_recom.dart';
 import 'package:architect_app/home.dart';
-import 'package:architect_app/productsSofaSets.dart';
-import 'package:architect_app/productsTables.dart';
-import 'package:architect_app/splashScreenForSignOut.dart';
+import 'package:architect_app/sofa_sets.dart';
+import 'package:architect_app/tables.dart';
+import 'package:architect_app/splash_screen_signout.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -53,9 +53,9 @@ class SideDrawerWidget extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          const SizedBox(
             height: 25,
-            child: const ListTile(
+            child: ListTile(
               title: Text(
                 "User",
                 textAlign: TextAlign.center,
@@ -77,7 +77,6 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('View In AR'),
             onTap: () {
               Navigator.push(
@@ -87,7 +86,6 @@ class SideDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('Color Suggestion'),
             onTap: () async {
               await availableCameras().then(
@@ -101,7 +99,6 @@ class SideDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('Products: Sofa Sets'),
             onTap: () {
               Navigator.push(
@@ -112,7 +109,6 @@ class SideDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('Products: Tables'),
             onTap: () {
               Navigator.push(
@@ -124,7 +120,6 @@ class SideDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('Sign Out'),
             onTap: () {
               FirebaseAuth.instance.signOut();
