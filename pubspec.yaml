@@ -106,10 +106,10 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: fonts/Montserrat-bold.ttf
+        - asset: fonts/Montserrat-Bold.ttf
     - family: Quicksand
       fonts:
-        - asset: fonts/Quicksand-bold.ttf
+        - asset: fonts/Quicksand-Bold.ttf
     - family: Itim
       fonts:
         - asset: fonts/Itim-Regular.ttf
