@@ -8,11 +8,11 @@ name: Dart
 on:
   push:
     paths:
-      - 'Version 2.0/ARchitect_App/**'
+      - 'ARchitect-Application/Version 2.0/ARchitect_App'
     branches: [ "main" ]
   pull_request:
     paths:
-      - 'Version 2.0/ARchitect_App/**'
+      - 'ARchitect-Application/Version 2.0/ARchitect_App'
     branches: [ "main" ]
 
 jobs:
