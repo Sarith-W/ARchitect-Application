@@ -33,118 +33,124 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             Container(
-                margin: const EdgeInsets.only(top: 300, left: 27),
-                height: 360,
-                width: 370,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.6),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      )
-                    ]),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 30),
-                      height: 30,
-                      width: 300,
-                      child: const Align(
-                        child: Text(
-                          "Welcome to ARchitect",
-                          style: TextStyle(
-                            fontFamily: 'Itim',
-                            fontSize: 25,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.black,
-                          ),
+              margin: const EdgeInsets.only(top: 300, left: 27),
+              height: 360,
+              width: 370,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white.withOpacity(0.6),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3),
+                    )
+                  ]),
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 30),
+                    height: 30,
+                    width: 300,
+                    child: const Align(
+                      child: Text(
+                        "Welcome to ARchitect",
+                        style: TextStyle(
+                          fontFamily: 'Itim',
+                          fontSize: 25,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
                         ),
                       ),
                     ),
-                    Container(
-                        margin: const EdgeInsets.only(top: 30),
-                        height: 60,
-                        width: 300,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              backgroundColor: Colors.black87,
-                              foregroundColor: Colors.white,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                              textStyle: const TextStyle(
-                                fontFamily: 'Itim',
-                                fontSize: 17,
-                              )),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SignInPage(key: const Key('signInPage'))),
-                            );
-                          },
-                          child: const Text("Sign In"),
-                        )),
-                    Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        height: 60,
-                        width: 300,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              backgroundColor: Colors.black87,
-                              foregroundColor: Colors.white,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                              textStyle: const TextStyle(
-                                fontFamily: 'Itim',
-                                fontSize: 17,
-                              )),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SignUpPage(key: const Key('signUpPage'))),
-                            );
-                          },
-                          child: const Text("Sign Up"),
-                        )),
-                    Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        height: 60,
-                        width: 300,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                              textStyle: const TextStyle(
-                                fontFamily: 'Itim',
-                                fontSize: 17,
-                              )),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SplashLogin(key: Key('splash'))),
-                            );
-                          },
-                          child: const Text("Continue as Guest"),
-                        )),
-                  ],
-                ))
+                  ),
+                  Container(
+                      margin: const EdgeInsets.only(top: 30),
+                      height: 60,
+                      width: 300,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.black87,
+                            foregroundColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            textStyle: const TextStyle(
+                              fontFamily: 'Itim',
+                              fontSize: 17,
+                            )),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SignInPage(key: const Key('signInPage'))),
+                          );
+                        },
+                        child: const Text("Sign In"),
+                      )),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    height: 60,
+                    width: 300,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.black87,
+                          foregroundColor: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          textStyle: const TextStyle(
+                            fontFamily: 'Itim',
+                            fontSize: 17,
+                          )),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SignUpPage(key: const Key('signUpPage'))),
+                        );
+                      },
+                      child: const Text("Sign Up"),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    height: 60,
+                    width: 300,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
+                        textStyle: const TextStyle(
+                          fontFamily: 'Itim',
+                          fontSize: 17,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SplashLogin(
+                              key: Key('splash'),
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text("Continue as Guest"),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

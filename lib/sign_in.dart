@@ -7,10 +7,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logger/logger.dart';
 import 'forgot_password.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({Key? key}) : super(key: key);
+
+  final logger = Logger(
+    filter: null,
+    printer: PrettyPrinter(),
+    output: null,
+  );
+
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -32,7 +40,7 @@ class SignInPage extends StatelessWidget {
             builder: (context) => const SplashLogin(key: Key('splash'))),
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
+      logger.e(e.toString());
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -103,7 +111,7 @@ class SignInPage extends StatelessWidget {
             builder: (context) => const SplashLogin(key: Key('splash'))),
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
+      logger.e(e.toString());
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -188,7 +196,7 @@ class SignInPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => WelcomePage()),
+                                builder: (context) => const WelcomePage()),
                           );
                         },
                         child: Container(

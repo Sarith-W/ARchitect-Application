@@ -1,10 +1,17 @@
 import 'dart:math';
 import 'package:image/image.dart';
 import 'package:collection/collection.dart';
+import 'package:logger/logger.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 
 abstract class Classifier {
+  final logger = Logger(
+    filter: null,
+    printer: PrettyPrinter(),
+    output: null,
+  );
+
   late Interpreter interpreter;
   late InterpreterOptions _interpreterOptions;
 
@@ -43,7 +50,6 @@ abstract class Classifier {
     try {
       interpreter =
           await Interpreter.fromAsset(modelName, options: _interpreterOptions);
-      print('Interpreter Created Successfully');
 
       _inputShape = interpreter.getInputTensor(0).shape;
       _outputShape = interpreter.getOutputTensor(0).shape;
@@ -52,16 +58,17 @@ abstract class Classifier {
 
       _outputBuffer = TensorBuffer.createFixedSize(_outputShape, _outputType);
     } catch (e) {
-      print('Unable to create interpreter, Caught Exception: ${e.toString()}');
+      logger
+          .e('Unable to create interpreter, Caught Exception: ${e.toString()}');
     }
   }
 
   Future<void> loadLabels() async {
     labels = await FileUtil.loadLabels(_labelsFileName);
     if (labels.length == _labelsLength) {
-      print('Labels loaded successfully');
+      logger.e('Labels loaded successfully');
     } else {
-      print('Unable to load labels');
+      logger.e('Unable to load labels');
     }
   }
 
@@ -83,22 +90,17 @@ abstract class Classifier {
     _inputImage = _preProcess();
     final pre = DateTime.now().millisecondsSinceEpoch - pres;
 
-    print('Time to load image: $pre ms');
+    logger.e('Time to load image: $pre ms');
 
     final runs = DateTime.now().millisecondsSinceEpoch;
     interpreter.run(_inputImage.buffer, _outputBuffer.getBuffer());
     final run = DateTime.now().millisecondsSinceEpoch - runs;
 
-    print('Time to run inference: $run ms');
+    logger.e('Time to run inference: $run ms');
+
     final outputValue = _outputBuffer.getDoubleValue(0);
     final pred = outputValue < 0.5 ? "Messy" : "Organized";
 
-    // Map<String, double> labeledProb = TensorLabel.fromList(
-    //     labels, _probabilityProcessor.process(_outputBuffer))
-    //     .getMapWithFloatValue();
-    // final pred = getTopProbability(labeledProb);
-    // print(pred);
-    // print(outputValue);
     return Category(pred, outputValue);
   }
 

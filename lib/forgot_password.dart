@@ -5,9 +5,17 @@ import 'package:architect_app/welcome_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   ForgotPasswordPage({Key? key}) : super(key: key);
+
+  final logger = Logger(
+    filter: null,
+    printer: PrettyPrinter(),
+    output: null,
+  );
+
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
@@ -77,7 +85,7 @@ class ForgotPasswordPage extends StatelessWidget {
         },
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
+      logger.e(e.toString());
       AlertDialog alert = AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -148,7 +156,7 @@ class ForgotPasswordPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WelcomePage()),
+                  MaterialPageRoute(builder: (context) => const WelcomePage()),
                 );
               },
               child: Container(

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:architect_app/welcome_page.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
 
 class SplashSignOut extends StatefulWidget {
   const SplashSignOut({super.key});
@@ -19,7 +18,7 @@ class _SplashSignOutState extends State<SplashSignOut> {
       const Duration(seconds: 2),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => WelcomePage()),
+        MaterialPageRoute(builder: (context) => const WelcomePage()),
       ),
     );
   }

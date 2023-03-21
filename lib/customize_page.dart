@@ -8,6 +8,7 @@ class Customize extends StatefulWidget {
   const Customize(this.path, {super.key});
 
   @override
+  // ignore: no_logic_in_create_state
   State<Customize> createState() => _CustomizeState(path);
 }
 
