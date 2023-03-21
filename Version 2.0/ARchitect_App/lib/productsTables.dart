@@ -48,14 +48,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table1Img.png"),
+                              builder: (context) => Customize("assets/images/table1Img.PNG"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table1Img.png?raw=true',
+                            'assets/images/table1Img.PNG',
                             'Table 1'),
                       ),
                       const SizedBox(height: 15.0),
@@ -64,14 +64,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table2Img.png"),
+                              builder: (context) => Customize("assets/images/table2Img.PNG"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table2Img.png?raw=true',
+                            'assets/images/table2Img.PNG',
                             'Table 2'),
                       ),
                       const SizedBox(height: 15.0),
@@ -80,14 +80,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table3Img.png"),
+                              builder: (context) => Customize("assets/images/table3Img.PNG"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table3Img.png?raw=true',
+                            'assets/images/table3Img.PNG',
                             'Table 3'),
                       ),
                       const SizedBox(height: 15.0),
@@ -96,14 +96,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table4Img.png"),
+                              builder: (context) => Customize("assets/images/table4Img.PNG"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table4Img.png?raw=true',
+                            'assets/images/table4Img.PNG',
                             'Table 4'),
                       ),
                       const SizedBox(height: 15.0),
@@ -112,14 +112,14 @@ class ProductsTables extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Customize("assets/images/table5Img.png"),
+                              builder: (context) => Customize("assets/images/table5Img.PNG"),
                             ),
                           );
                         },
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/table5Img.png?raw=true',
+                            'assets/images/table5Img.jpg',
                             'Table 5'),
                       ),
                     ],
@@ -135,7 +135,7 @@ class ProductsTables extends StatelessWidget {
   }
 
   Widget buildImageStack(BuildContext context, double sizedBoxHeight,
-      String imageUrl, String text) {
+      String imagePath, String text) {
     return Stack(
       children: <Widget>[
         SizedBox(
@@ -144,8 +144,8 @@ class ProductsTables extends StatelessWidget {
           child: Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(
-                imageUrl,
+              child: Image.asset(
+                imagePath,
                 fit: BoxFit.cover,
                 errorBuilder: (BuildContext context, Object exception,
                     StackTrace? stackTrace) {

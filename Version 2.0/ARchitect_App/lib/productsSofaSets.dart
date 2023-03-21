@@ -54,7 +54,7 @@ class ProductsSofaSets extends StatelessWidget {
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/sofa1Img.jpg?raw=true',
+                            'assets/images/sofa1Img.jpg',
                             'Sofa 1'),
                       ),
                       const SizedBox(height: 15.0),
@@ -68,7 +68,7 @@ class ProductsSofaSets extends StatelessWidget {
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/sofa2Img.jpg?raw=true',
+                            'assets/images/sofa2Img.jpg',
                             'Sofa 2'),
                       ),
                       const SizedBox(height: 15.0),
@@ -84,7 +84,7 @@ class ProductsSofaSets extends StatelessWidget {
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/sofa3Img.jpg?raw=true',
+                            'assets/images/sofa3Img.jpg',
                             'Sofa 3'),
                       ),
                       const SizedBox(height: 15.0),
@@ -100,7 +100,7 @@ class ProductsSofaSets extends StatelessWidget {
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/sofa4Img.jpg?raw=true',
+                            'assets/images/sofa4Img.jpg',
                             'Sofa 4'),
                       ),
                       const SizedBox(height: 15.0),
@@ -116,7 +116,7 @@ class ProductsSofaSets extends StatelessWidget {
                         child: buildImageStack(
                             context,
                             sizedBoxHeight,
-                            'https://github.com/Sarith-W/ARchitect-3D-Objects/blob/main/images/sofa5Img.jpg?raw=true',
+                            'assets/images/sofa5Img.jpg',
                             'Sofa 5'),
                       ),
                     ],
@@ -132,7 +132,7 @@ class ProductsSofaSets extends StatelessWidget {
   }
 
   Widget buildImageStack(BuildContext context, double sizedBoxHeight,
-      String imageUrl, String text) {
+      String imagePath, String text) {
     return Stack(
       children: <Widget>[
         SizedBox(
@@ -141,8 +141,8 @@ class ProductsSofaSets extends StatelessWidget {
           child: Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.network(
-                imageUrl,
+              child: Image.asset(
+                imagePath,
                 fit: BoxFit.cover,
                 errorBuilder: (BuildContext context, Object exception,
                     StackTrace? stackTrace) {
