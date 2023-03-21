@@ -12,11 +12,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       actions: [
         IconButton(
-          icon: const Icon(Icons.shopping_cart),
-          tooltip: 'Cart',
-          onPressed: () {},
-        ),
-        IconButton(
           icon: const Icon(Icons.login),
           tooltip: 'Logout',
           onPressed: () {

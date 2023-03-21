@@ -125,11 +125,6 @@ class SideDrawerWidget extends StatelessWidget {
           ),
           ListTile(
             //leading: Icon(Icons.new_page),
-            title: const Text('My Cart'),
-            onTap: () {},
-          ),
-          ListTile(
-            //leading: Icon(Icons.new_page),
             title: const Text('Sign Out'),
             onTap: () {
               FirebaseAuth.instance.signOut();
