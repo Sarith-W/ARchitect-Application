@@ -1,11 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:io';
-
+import 'package:architect_app/home_button.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'color_analyzer.dart';
 
 class CameraPage extends StatefulWidget {
@@ -81,9 +80,11 @@ class _CameraPageState extends State<CameraPage> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              buildColorWidget(dominantHex, 'Most Frequent Color'),
+              buildColorWidget(dominantHex, 'Most Frequent Color',
+                  'Out of all the colors present in this scene, this one stands out as the most dominant'),
               const SizedBox(height: 8),
-              buildColorWidget(complementaryHex, 'Suggested Color'),
+              buildColorWidget(complementaryHex, 'Suggested Color',
+                  "Our suggestion for your furniture's color would be this, as it's the most appealing option"),
             ],
           ),
           actions: [
@@ -118,34 +119,18 @@ class _CameraPageState extends State<CameraPage> {
     }
   }
 
-  Widget buildColorWidget(String hexCode, String title) => Column(
+  Widget buildColorWidget(String hexCode, String title, String subheading) =>
+      Column(
         children: [
-          Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: hexColor(hexCode),
-                ),
-                height: 100,
-                width: 100,
-              ),
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    hexCode,
-                    style: const TextStyle(
-                        fontFamily: 'Quicksand',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              color: hexColor(hexCode),
+            ),
+            height: 100,
+            width: 100,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           Text(
             title,
             style: TextStyle(
@@ -155,6 +140,18 @@ class _CameraPageState extends State<CameraPage> {
               color: hexColor(hexCode),
             ),
           ),
+          const SizedBox(height: 4),
+          Text(
+            subheading,
+            textAlign: TextAlign.center, // added property
+            style: TextStyle(
+              fontFamily: 'Quicksand',
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 10),
         ],
       );
 
@@ -197,6 +194,7 @@ class _CameraPageState extends State<CameraPage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
               ),
+            const DraggableButton(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(

@@ -20,6 +20,7 @@ import 'package:image/image.dart' as img;
 import 'classifier.dart';
 import 'dart:io';
 
+import 'home_button.dart';
 import 'model.dart';
 
 class ARViewWidget extends StatefulWidget {
@@ -62,6 +63,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
             onARViewCreated: onARViewCreated,
             planeDetectionConfig: PlaneDetectionConfig.horizontal,
           ),
+          const DraggableButton(),
           Align(
             alignment: FractionalOffset.bottomCenter,
             child: Column(
