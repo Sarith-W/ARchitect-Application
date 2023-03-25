@@ -36,10 +36,10 @@ class _CameraPageState extends State<CameraPage> {
 
   Future<void> takePicture() async {
     if (!_cameraController.value.isInitialized) {
-      return;
+      return Future.error('Camera is not initialized');
     }
     if (_cameraController.value.isTakingPicture) {
-      return;
+      return Future.error('Camera is already taking a picture');
     }
     try {
       await _cameraController
@@ -143,7 +143,7 @@ class _CameraPageState extends State<CameraPage> {
           const SizedBox(height: 4),
           Text(
             subheading,
-            textAlign: TextAlign.center, // added property
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: 'Quicksand',
               fontSize: 12,
