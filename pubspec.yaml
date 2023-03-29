@@ -37,6 +37,8 @@ dependencies:
   image:
   logger:
   path:
+  firebase_auth_mocks:
+  google_sign_in_mocks:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,7 +49,7 @@ dependencies:
   firebase_core: ^2.7.0
   google_sign_in: ^5.0.0
   email_validator: ^2.0.1
-  tflite_flutter: ^0.9.0
+  tflite_flutter:
   tflite_flutter_helper:
     git:
       url: https://github.com/filofan1/tflite_flutter_helper.git

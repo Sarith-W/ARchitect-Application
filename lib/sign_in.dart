@@ -10,9 +10,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'forgot_password.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
   final logger = Logger(
     filter: null,
     printer: PrettyPrinter(),
@@ -23,12 +28,14 @@ class SignInPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  @override
   void dispose() {
+    super.dispose();
     emailController.dispose();
     passwordController.dispose();
   }
 
-  Future signIn(BuildContext context) async {
+  Future signInStandard(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -336,7 +343,7 @@ class SignInPage extends StatelessWidget {
                                       fontSize: 17,
                                     )),
                                 onPressed: () {
-                                  signIn(context);
+                                  signInStandard(context);
                                 },
                                 child: const Text("Sign In"),
                               )),
