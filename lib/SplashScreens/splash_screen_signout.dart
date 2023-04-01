@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:architect_app/Home/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashSignOut extends StatefulWidget {
   const SplashSignOut({super.key});
@@ -15,7 +16,7 @@ class _SplashSignOutState extends State<SplashSignOut> {
     super.initState();
 
     Timer(
-      const Duration(seconds: 2),
+      const Duration(seconds: 4),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const WelcomePage()),
@@ -33,9 +34,9 @@ class _SplashSignOutState extends State<SplashSignOut> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CircularProgressIndicator(),
-              Text('Signing Out...')
+            children: [
+              Lottie.network('https://assets7.lottiefiles.com/packages/lf20_vmlm0zew.json'),
+              const Text('Signing Out...')
             ],
           ),
         ),

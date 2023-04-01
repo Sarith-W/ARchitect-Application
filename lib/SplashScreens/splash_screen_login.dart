@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../Home/home.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashLogin extends StatefulWidget {
   const SplashLogin({super.key});
@@ -15,7 +16,7 @@ class _SplashLoginState extends State<SplashLogin> {
     super.initState();
 
     Timer(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
@@ -33,9 +34,9 @@ class _SplashLoginState extends State<SplashLogin> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CircularProgressIndicator(),
-              Text('Welcome to ARchitect')
+            children: [
+              Lottie.network('https://assets8.lottiefiles.com/packages/lf20_a5vGOJ.json'),
+              const Text('Welcome to ARchitect')
             ],
           ),
         ),
