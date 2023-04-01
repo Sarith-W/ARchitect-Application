@@ -70,8 +70,9 @@
 				53D12399887A245ECEEC1ADE /* Pods-Runner.release.xcconfig */,
 				EE1503F1F5420E5C94696616 /* Pods-Runner.profile.xcconfig */,
 			);
-			path = Pods;
-			sourceTree = "<group>";
+			name = Pods;
+			path = "/Users/sarithwijesundera/Documents/GitHub/ARchitect-Application/ios/Pods";
+			sourceTree = "<absolute>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
@@ -264,7 +265,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		AEFD5E0F785D66B0A51C38D4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
