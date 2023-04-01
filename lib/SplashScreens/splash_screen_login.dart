@@ -1,15 +1,15 @@
 import 'dart:async';
-import 'package:architect_app/welcome_page.dart';
 import 'package:flutter/material.dart';
+import '../Home/home.dart';
 
-class SplashSignOut extends StatefulWidget {
-  const SplashSignOut({super.key});
+class SplashLogin extends StatefulWidget {
+  const SplashLogin({super.key});
 
   @override
-  State<SplashSignOut> createState() => _SplashSignOutState();
+  State<SplashLogin> createState() => _SplashLoginState();
 }
 
-class _SplashSignOutState extends State<SplashSignOut> {
+class _SplashLoginState extends State<SplashLogin> {
   @override
   void initState() {
     super.initState();
@@ -18,7 +18,7 @@ class _SplashSignOutState extends State<SplashSignOut> {
       const Duration(seconds: 2),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const WelcomePage()),
+        MaterialPageRoute(builder: (context) => Home(key: const Key('home'))),
       ),
     );
   }
@@ -35,7 +35,7 @@ class _SplashSignOutState extends State<SplashSignOut> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               CircularProgressIndicator(),
-              Text('Signing Out...')
+              Text('Welcome to ARchitect')
             ],
           ),
         ),

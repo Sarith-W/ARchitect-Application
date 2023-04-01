@@ -1,9 +1,9 @@
-import 'package:architect_app/splash_screen_signout.dart';
+import 'package:architect_app/SplashScreens/splash_screen_signout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../home.dart';
+import '../Home/home.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({Key? key}) : super(key: key);

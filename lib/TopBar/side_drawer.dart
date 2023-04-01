@@ -1,9 +1,9 @@
-import 'package:architect_app/ar_view.dart';
-import 'package:architect_app/color_recom.dart';
-import 'package:architect_app/home.dart';
-import 'package:architect_app/sofa_sets.dart';
-import 'package:architect_app/tables.dart';
-import 'package:architect_app/splash_screen_signout.dart';
+import 'package:architect_app/AR/ar_view.dart';
+import 'package:architect_app/ColorRecommend/color_recom.dart';
+import 'package:architect_app/Home/home.dart';
+import 'package:architect_app/Products/sofa_sets.dart';
+import 'package:architect_app/Products/tables.dart';
+import 'package:architect_app/SplashScreens/splash_screen_signout.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

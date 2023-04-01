@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:architect_app/color_analyzer.dart';
+import 'package:architect_app/ColorRecommend/color_analyzer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';

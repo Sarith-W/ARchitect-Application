@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'TopBar/app_bar.dart';
-import 'ar_view.dart';
+import '../TopBar/app_bar.dart';
+import '../AR/ar_view.dart';
 
 class Customize extends StatefulWidget {
   final String path;

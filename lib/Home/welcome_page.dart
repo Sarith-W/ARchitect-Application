@@ -1,6 +1,6 @@
-import 'package:architect_app/sign_in.dart';
-import 'package:architect_app/sign_up.dart';
-import 'package:architect_app/splash_screen_login.dart';
+import 'package:architect_app/Authentication/sign_in.dart';
+import 'package:architect_app/Authentication/sign_up.dart';
+import 'package:architect_app/SplashScreens/splash_screen_login.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {

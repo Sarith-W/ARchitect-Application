@@ -17,11 +17,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 import 'package:image/image.dart' as img;
-import 'classifier.dart';
+import '../ML_Model/classifier.dart';
 import 'dart:io';
 
-import 'home_button.dart';
-import 'model.dart';
+import '../Home/home_button.dart';
+import '../ML_Model/model.dart';
 
 class ARViewWidget extends StatefulWidget {
   const ARViewWidget({Key? key}) : super(key: key);

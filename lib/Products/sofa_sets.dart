@@ -1,10 +1,10 @@
 import 'package:architect_app/TopBar/app_bar.dart';
 import 'package:architect_app/TopBar/side_drawer.dart';
-import 'package:architect_app/customize_page.dart';
+import 'package:architect_app/Products/customize_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'home_button.dart';
+import '../Home/home_button.dart';
 
 class ProductsSofaSets extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

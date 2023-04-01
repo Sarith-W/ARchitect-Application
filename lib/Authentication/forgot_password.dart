@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:architect_app/sign_in.dart';
-import 'package:architect_app/welcome_page.dart';
+import 'package:architect_app/Authentication/sign_in.dart';
+import 'package:architect_app/Home/welcome_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

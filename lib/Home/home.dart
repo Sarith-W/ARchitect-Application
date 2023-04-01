@@ -1,14 +1,14 @@
-import 'package:architect_app/ar_view.dart';
-import 'package:architect_app/color_recom.dart';
+import 'package:architect_app/AR/ar_view.dart';
+import 'package:architect_app/ColorRecommend/color_recom.dart';
 import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 
-import 'TopBar/app_bar.dart';
-import 'TopBar/side_drawer.dart';
-import 'sofa_sets.dart';
-import 'tables.dart';
+import '../TopBar/app_bar.dart';
+import '../TopBar/side_drawer.dart';
+import '../Products/sofa_sets.dart';
+import '../Products/tables.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
