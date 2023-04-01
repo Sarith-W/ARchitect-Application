@@ -56,7 +56,7 @@ class ProductsSofaSets extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa1Img.jpg', 'Sofa 1'),
+                              'assets/images/sofa1Img.jpg', 'Modern'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -70,7 +70,7 @@ class ProductsSofaSets extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa2Img.jpg', 'Sofa 2'),
+                              'assets/images/sofa2Img.jpg', 'Eagle'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -84,7 +84,7 @@ class ProductsSofaSets extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa3Img.jpg', 'Sofa 3'),
+                              'assets/images/sofa3Img.jpg', 'Brownie'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -98,7 +98,7 @@ class ProductsSofaSets extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa4Img.jpg', 'Sofa 4'),
+                              'assets/images/sofa4Img.jpg', 'Coupe'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -112,7 +112,7 @@ class ProductsSofaSets extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa5Img.jpg', 'Sofa 5'),
+                              'assets/images/sofa5Img.jpg', 'Divan'),
                         ),
                       ],
                     ),

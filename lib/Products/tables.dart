@@ -56,7 +56,7 @@ class ProductsTables extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table1Img.png', 'Table 1'),
+                              'assets/images/table1Img.png', 'Woodie'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -70,7 +70,7 @@ class ProductsTables extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table2Img.png', 'Table 2'),
+                              'assets/images/table2Img.png', 'Classic'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -84,7 +84,7 @@ class ProductsTables extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table3Img.png', 'Table 3'),
+                              'assets/images/table3Img.png', 'Iron'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -98,7 +98,7 @@ class ProductsTables extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table4Img.png', 'Table 4'),
+                              'assets/images/table4Img.png', 'Marble'),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -112,7 +112,7 @@ class ProductsTables extends StatelessWidget {
                             );
                           },
                           child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table5Img.png', 'Table 5'),
+                              'assets/images/table5Img.png', 'Coffee'),
                         ),
                       ],
                     ),
