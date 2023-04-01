@@ -287,8 +287,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     screenshotController.captureAndSave(path, fileName: fileName);
     final imageFile = File(imagePath);
 
-    final pred =
-        _classifier.predict(img.decodeImage(imageFile.readAsBytesSync())!);
+    final pred = _classifier.predict(img.decodeImage(imageFile.readAsBytesSync())!);
 
     await showDialog(
       context: context,
@@ -306,7 +305,10 @@ class _ARViewWidgetState extends State<ARViewWidget> {
             ),
           ),
         ),
-        content: Text(pred.toString()),
+        content: Text(
+          "Your furniture arrangement is ${pred.label}",
+          textAlign: TextAlign.center,
+        ),
         actions: [
           SizedBox(
             width: double.infinity,
