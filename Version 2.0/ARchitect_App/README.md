@@ -1,4 +1,4 @@
-# architect_app
+# ARchitect_App
 
 A new Flutter project.
 
