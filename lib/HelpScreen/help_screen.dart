@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../TopBar/app_bar.dart';
+
 class HelpScreen extends StatelessWidget {
   const HelpScreen({Key? key}) : super(key: key);
 
@@ -7,26 +9,7 @@ class HelpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              title: const Text(
-                  'Help',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600
-                  )
-              ),
-              centerTitle: true,
-              leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  color: Colors.black
-              ),
-              elevation: 0,
-              backgroundColor: Colors.white,
-            ),
+            appBar: const AppBarWidget(),
             body: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               color: Colors.white,
