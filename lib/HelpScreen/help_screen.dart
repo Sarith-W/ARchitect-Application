@@ -387,7 +387,7 @@ class HelpScreen extends StatelessWidget {
                       children: [
                         const SizedBox(height: 20),
                         const Text(
-                          'How to check colour suggestions?',
+                          'How to check color suggestions?',
                           style: TextStyle(
                             fontFamily: 'Itim',
                             color: Colors.black,
@@ -430,7 +430,7 @@ class HelpScreen extends StatelessWidget {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Step 2: Click “Check Colour Suggestions',
+                                  'Step 2: Click “Check Color Suggestions',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
