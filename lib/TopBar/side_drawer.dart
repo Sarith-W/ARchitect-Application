@@ -120,6 +120,17 @@ class SideDrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
+            title: const Text('Help'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductsTables(),
+                ),
+              );
+            },
+          ),
+          ListTile(
             title: const Text('Sign Out'),
             onTap: () {
               FirebaseAuth.instance.signOut();
