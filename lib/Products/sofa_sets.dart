@@ -135,18 +135,21 @@ class ProductsSofaSets extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: sizedBoxHeight,
-          child: Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
-                  return const Center(child: Text('Image Not Found'));
-                },
+          child: Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  errorBuilder: (BuildContext context, Object exception,
+                      StackTrace? stackTrace) {
+                    return const Center(child: Text('Image Not Found'));
+                  },
+                ),
               ),
-            ),
+            ],
           ),
         ),
         Container(
