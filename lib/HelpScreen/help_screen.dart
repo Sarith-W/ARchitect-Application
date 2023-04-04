@@ -28,7 +28,7 @@ class HelpScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
                     decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.white70,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -45,13 +45,15 @@ class HelpScreen extends StatelessWidget {
                         const Text(
                           'How to view the furniture in AR?',
                           style: TextStyle(
+                              fontFamily: 'Itim',
                               color: Colors.black,
-                              fontSize: 20,
+                              fontSize: 22,
                               fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 20),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           width: 320,
                           decoration: const BoxDecoration(
                               color: Color(0xFF2d3436),
@@ -72,6 +74,7 @@ class HelpScreen extends StatelessWidget {
                                 'Method 1:',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
+                                    fontFamily: 'Itim',
                                     color: Colors.white,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -108,6 +111,7 @@ class HelpScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           width: 320,
                           decoration: const BoxDecoration(
                               color: Color(0xFF2d3436),
@@ -128,6 +132,7 @@ class HelpScreen extends StatelessWidget {
                                 'Method 2:',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
+                                  fontFamily: 'Itim',
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
@@ -150,7 +155,7 @@ class HelpScreen extends StatelessWidget {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Step 2: Click the three lines in the top \nleft corner',
+                                  'Step 2: Click the three lines in the top left corner',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
@@ -176,6 +181,7 @@ class HelpScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           width: 320,
                           decoration: const BoxDecoration(
                               color: Color(0xFF2d3436),
@@ -196,6 +202,7 @@ class HelpScreen extends StatelessWidget {
                                 'Method 3:',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
+                                  fontFamily: 'Itim',
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
@@ -260,9 +267,9 @@ class HelpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
+                    margin: const EdgeInsets.only(top: 25, left: 5, right: 5),
                     decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.white70,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -280,13 +287,15 @@ class HelpScreen extends StatelessWidget {
                           'How to rate the furniture arrangement?',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: 'Itim',
                             color: Colors.black,
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 20),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           width: 320,
                           decoration: const BoxDecoration(
                               color: Color(0xFF2d3436),
@@ -361,9 +370,9 @@ class HelpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    margin: const EdgeInsets.only(top: 15, left: 5, right: 5, bottom: 30),
+                    margin: const EdgeInsets.only(top: 25, left: 5, right: 5, bottom: 30),
                     decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.white70,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -380,13 +389,15 @@ class HelpScreen extends StatelessWidget {
                         const Text(
                           'How to check colour suggestions?',
                           style: TextStyle(
+                            fontFamily: 'Itim',
                             color: Colors.black,
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 20),
                         Container(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                           width: 320,
                           decoration: const BoxDecoration(
                               color: Color(0xFF2d3436),
