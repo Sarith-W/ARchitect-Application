@@ -1,5 +1,6 @@
 import 'package:architect_app/AR/ar_view.dart';
 import 'package:architect_app/ColorRecommend/color_recom.dart';
+import 'package:architect_app/HelpScreen/help_screen.dart';
 import 'package:architect_app/Home/home.dart';
 import 'package:architect_app/Products/sofa_sets.dart';
 import 'package:architect_app/Products/tables.dart';
@@ -125,7 +126,7 @@ class SideDrawerWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductsTables(),
+                  builder: (context) => const HelpScreen(),
                 ),
               );
             },
