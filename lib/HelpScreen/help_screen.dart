@@ -8,12 +8,23 @@ class HelpScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: const Text(
-                'Help',
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+          title: const Text(
+              'Help',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w600
+            )
+          ),
+            centerTitle: true,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              color: Colors.black
+          ),
+            elevation: 0,
             backgroundColor: Colors.white,
           ),
         ));
