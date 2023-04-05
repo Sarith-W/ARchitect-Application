@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 import 'package:lottie/lottie.dart';
 
 class VerifyEmailPage extends StatefulWidget{
@@ -17,6 +18,12 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
   bool isEmailVerified = false;
   bool canResendEmail = false;
   Timer? timer;
+
+  final logger = Logger(
+    filter: null,
+    printer: PrettyPrinter(),
+    output: null,
+  );
 
   @override
   void initState(){
@@ -56,8 +63,56 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
       setState(() => canResendEmail = false);
       await Future.delayed(const Duration(seconds: 5));
       setState(() => canResendEmail = true);
-    }catch(e){
-      print(e);
+    }on FirebaseAuthException catch(e){
+      logger.e(e.toString());
+      AlertDialog alert = AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        title: const Center(
+          child: Text(
+            "Oops...",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        content: Text(e.message!),
+        actions: [
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+              ),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
     }
   }
 
