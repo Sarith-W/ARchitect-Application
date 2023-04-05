@@ -1,9 +1,6 @@
 import 'dart:async';
-
-import 'package:architect_app/Home/welcome_page.dart';
 import 'package:architect_app/SplashScreens/splash_screen_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
