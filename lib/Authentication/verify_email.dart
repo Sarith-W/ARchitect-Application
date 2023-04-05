@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class VerifyEmailPage extends StatefulWidget{
   @override
@@ -85,8 +86,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Lottie.network('https://assets3.lottiefiles.com/private_files/lf30_o0calpsv.json'),
             const Text(
-              'A verification email has been sent to your email!',
+              'A verification email has been sent to your email',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
