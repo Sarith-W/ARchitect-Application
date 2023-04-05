@@ -86,7 +86,7 @@ class WelcomePage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SignInPage(key: const Key('signInPage'))),
+                                    const SignInPage(key: Key('signInPage'))),
                           );
                         },
                         child: const Text("Sign In"),

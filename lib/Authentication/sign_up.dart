@@ -362,8 +362,8 @@ class SignUpPage extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SignInPage(
-                                            key: const Key('signInPage'))),
+                                        builder: (context) => const SignInPage(
+                                            key: Key('signInPage'))),
                                   );
                                 },
                                 child: const Text(
