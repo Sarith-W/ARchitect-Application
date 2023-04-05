@@ -228,13 +228,8 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
                 ),
               ),
               onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const WelcomePage(),
-                  ),
-                );
+                FirebaseAuth.instance.currentUser?.delete();
+                Navigator.pop(context);
               }
             )
           ],
