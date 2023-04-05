@@ -1,6 +1,7 @@
 import 'package:architect_app/Authentication/sign_in.dart';
 import 'package:architect_app/Authentication/sign_up.dart';
 import 'package:architect_app/SplashScreens/splash_screen_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -136,6 +137,7 @@ class WelcomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        FirebaseAuth.instance.signOut();
                         Navigator.push(
                           context,
                           MaterialPageRoute(

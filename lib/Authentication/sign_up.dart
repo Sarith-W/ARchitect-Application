@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:architect_app/Authentication/sign_in.dart';
+import 'package:architect_app/Authentication/verify_email.dart';
 import 'package:architect_app/SplashScreens/splash_screen_login.dart';
 import 'package:architect_app/Home/welcome_page.dart';
 import 'package:email_validator/email_validator.dart';
@@ -40,7 +41,8 @@ class SignUpPage extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => const SplashLogin(key: Key('splash'))),
+            builder: (context) => VerifyEmailPage()
+        ),
       );
     } on FirebaseAuthException catch (e) {
       logger.e(e.toString());
