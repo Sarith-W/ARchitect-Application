@@ -63,6 +63,54 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
       setState(() => canResendEmail = false);
       await Future.delayed(const Duration(seconds: 5));
       setState(() => canResendEmail = true);
+      AlertDialog alert = AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        title: const Center(
+          child: Text(
+            "Sent",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        content: const Text("Verification Email has been sent!", textAlign: TextAlign.center,),
+        actions: [
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+              ),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Quicksand',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
     }on FirebaseAuthException catch(e){
       logger.e(e.toString());
       AlertDialog alert = AlertDialog(
@@ -141,7 +189,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.network('https://assets3.lottiefiles.com/private_files/lf30_o0calpsv.json'),
+            Lottie.network('https://assets8.lottiefiles.com/private_files/lf30_o0calpsv.json'),
             const Text(
               'A verification email has been sent to your email',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
