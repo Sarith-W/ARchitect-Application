@@ -55,8 +55,21 @@ class ProductsTables extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table1Img.png', 'Woodie'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/table1Img.png', 'Woodie'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -69,8 +82,21 @@ class ProductsTables extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table2Img.png', 'Classic'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/table2Img.png', 'Classic'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -83,8 +109,21 @@ class ProductsTables extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table3Img.png', 'Iron'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/table3Img.png', 'Iron'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -97,8 +136,21 @@ class ProductsTables extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table4Img.png', 'Marble'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/table4Img.png', 'Marble'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -111,8 +163,21 @@ class ProductsTables extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/table5Img.png', 'Coffee'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/table5Img.png', 'Coffee'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

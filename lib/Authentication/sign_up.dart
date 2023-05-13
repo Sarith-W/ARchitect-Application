@@ -179,7 +179,7 @@ class SignUpPage extends StatelessWidget {
           backgroundColor: const Color(0xFF4E342E),
           toolbarHeight: 10,
         ),
-        body: ListView(
+        body: Stack(
           children: [
             Column(
               children: [
@@ -319,23 +319,27 @@ class SignUpPage extends StatelessWidget {
                               margin: const EdgeInsets.only(top: 25),
                               height: 45,
                               width: 300,
-                              child: TextButton(
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.black87,
-                                    foregroundColor: Colors.white,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                    ),
-                                    textStyle: const TextStyle(
+                              child: FloatingActionButton.extended(
+                                label: const Text(
+                                  "Sign Up",
+                                  style: TextStyle(
                                       fontFamily: 'Itim',
-                                      fontSize: 17,
-                                    )),
+                                      fontSize: 16),
+                                ),
+                                backgroundColor: Colors.black,
+                                icon: const Icon(
+                                  Icons.create_outlined,
+                                  size: 22.0,
+                                ),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                                ),
                                 onPressed: () {
                                   signUp(context);
                                 },
-                                child: const Text("Sign Up"),
-                              )),
+                              ),
+                          ),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             height: 45,
@@ -373,7 +377,33 @@ class SignUpPage extends StatelessWidget {
                               )),
                         ],
                       ),
-                    ))
+                    )
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  height: 45,
+                  width: 130,
+                  child: FloatingActionButton.extended(
+                    label: const Text('Go Back'),
+                    backgroundColor: Colors.red,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(20)),
+                    ),
+                    icon: const Icon(
+                      Icons.turn_left_rounded,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                            const WelcomePage(key: Key('welcomePage'))),
+                      );
+                    },
+                  ),
+                ),
               ],
             )
           ],

@@ -20,7 +20,6 @@ import 'package:image/image.dart' as img;
 import '../ML_Model/classifier.dart';
 import 'dart:io';
 
-import '../Home/home_button.dart';
 import '../ML_Model/model.dart';
 
 class ARViewWidget extends StatefulWidget {
@@ -41,6 +40,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
 
   ScreenshotController screenshotController = ScreenshotController();
   late Classifier _classifier;
+
 
   @override
   void initState() {
@@ -63,7 +63,6 @@ class _ARViewWidgetState extends State<ARViewWidget> {
             onARViewCreated: onARViewCreated,
             planeDetectionConfig: PlaneDetectionConfig.horizontal,
           ),
-          const DraggableButton(),
           Align(
             alignment: FractionalOffset.bottomCenter,
             child: Column(
@@ -82,12 +81,20 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                               Container(
                                 margin:
                                     const EdgeInsets.only(top: 20, bottom: 10),
-                                height: 50,
-                                width: 320,
+                                height: 55,
+                                width: 350,
                                 child: FloatingActionButton.extended(
-                                  label: const Text(
-                                      'Rate the Furniture Arrangement'),
+                                  label: Text(
+                                      'Rate the Furniture Arrangement',
+                                    style: GoogleFonts.quicksand(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 15,
+                                        color: Colors.white),
+                                  ),
                                   backgroundColor: Colors.black,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                                  ),
                                   icon: const Icon(
                                     Icons.table_bar_rounded,
                                     size: 24.0,
@@ -188,7 +195,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                   },
                   child: Container(
                     width: double.infinity,
-                    height: 25,
+                    height: 40,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.vertical(
@@ -218,8 +225,8 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     this.arAnchorManager = arAnchorManager;
     this.arSessionManager!.onInitialize(
           showFeaturePoints: false,
-          showPlanes: true,
-          customPlaneTexturePath: "assets/images/triangle.PNG",
+          showPlanes: false,
+          customPlaneTexturePath: "assets/images/triangle.png",
           showWorldOrigin: false,
           handlePans: true,
           handleRotation: true,
@@ -352,9 +359,9 @@ class _ARViewWidgetState extends State<ARViewWidget> {
           uri: currentObjectUri,
           scale: vector.Vector3(0.8, 0.8, 0.8),
           position: vector.Vector3(0.0, 0.0, 0.0),
-          rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0));
-      bool? didAddNodeToAnchor =
-          await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
+          rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0)
+      );
+      bool? didAddNodeToAnchor = await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
       if (didAddNodeToAnchor!) {
         nodes.add(newNode);
       } else {

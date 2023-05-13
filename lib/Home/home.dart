@@ -172,8 +172,8 @@ class Home extends StatelessWidget {
                     aspectRatio: 16 / 9,
                   ),
                   items: [
-                    buildCarouselItem('TABLES', 'carouselOption1.jpg', context),
                     buildCarouselItem('SOFAS', 'carouselOption2.webp', context),
+                    buildCarouselItem('TABLES', 'carouselOption1.jpg', context),
                     buildCarouselItem('AR', 'carouselOption3.PNG', context),
                   ],
                 ),
@@ -181,10 +181,26 @@ class Home extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   height: screenHeight * 0.065,
-                  child: ElevatedButton(
+                  child: FloatingActionButton.extended(
+                    label: const Text(
+                        "Check Color Suggestions",
+                      style: TextStyle(
+                          fontFamily: 'Quicksand',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    ),
+                    backgroundColor: Colors.black,
+                    icon: const Icon(
+                      Icons.color_lens_rounded,
+                      size: 24.0,
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                    ),
                     onPressed: () async {
                       await availableCameras().then(
-                        (value) => Navigator.push(
+                            (value) => Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (_) => CameraPage(cameras: value),
@@ -192,23 +208,6 @@ class Home extends StatelessWidget {
                         ),
                       );
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shadowColor: const Color.fromARGB(255, 120, 112, 112),
-                      elevation: 2,
-                      disabledForegroundColor: Colors.black.withOpacity(0.38),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                    ),
-                    child: const Text(
-                      "Check Color Suggestions",
-                      style: TextStyle(
-                          fontFamily: 'Quicksand',
-                          fontSize: 15,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white),
-                    ),
                   ),
                 ),
               ],

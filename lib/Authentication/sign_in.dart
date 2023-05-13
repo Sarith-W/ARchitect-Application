@@ -181,7 +181,7 @@ class _SignInPageState extends State<SignInPage> {
           backgroundColor: const Color(0xFF4E342E),
           toolbarHeight: 10,
         ),
-        body: ListView(
+        body: Stack(
           children: [
             Column(
               children: [
@@ -330,23 +330,27 @@ class _SignInPageState extends State<SignInPage> {
                               margin: const EdgeInsets.only(top: 15),
                               height: 45,
                               width: 300,
-                              child: TextButton(
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.black87,
-                                    foregroundColor: Colors.white,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                    ),
-                                    textStyle: const TextStyle(
+                              child: FloatingActionButton.extended(
+                                label: const Text(
+                                  "Sign In",
+                                  style: TextStyle(
                                       fontFamily: 'Itim',
-                                      fontSize: 17,
-                                    )),
+                                      fontSize: 16),
+                                ),
+                                backgroundColor: Colors.black,
+                                icon: const Icon(
+                                  Icons.login,
+                                  size: 22.0,
+                                ),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                                ),
                                 onPressed: () {
                                   signInStandard(context);
                                 },
-                                child: const Text("Sign In"),
-                              )),
+                              ),
+                          ),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             height: 45,
@@ -384,7 +388,33 @@ class _SignInPageState extends State<SignInPage> {
                               )),
                         ],
                       ),
-                    ))
+                    )
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  height: 45,
+                  width: 130,
+                  child: FloatingActionButton.extended(
+                    label: const Text('Go Back'),
+                    backgroundColor: Colors.red,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(20)),
+                    ),
+                    icon: const Icon(
+                      Icons.turn_left_rounded,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const WelcomePage(key: Key('welcomePage'))),
+                      );
+                    },
+                  ),
+                ),
               ],
             )
           ],

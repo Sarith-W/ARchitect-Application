@@ -7,8 +7,7 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
             appBar: const AppBarWidget(),
             body: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -28,7 +27,7 @@ class HelpScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
                     decoration: const BoxDecoration(
-                        color: Colors.white70,
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -269,7 +268,7 @@ class HelpScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 25, left: 5, right: 5),
                     decoration: const BoxDecoration(
-                        color: Colors.white70,
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -372,7 +371,7 @@ class HelpScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 25, left: 5, right: 5, bottom: 30),
                     decoration: const BoxDecoration(
-                        color: Colors.white70,
+                        color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         boxShadow: [
                           BoxShadow(
@@ -473,7 +472,6 @@ class HelpScreen extends StatelessWidget {
                 ],
               ),
             )
-        )
-    );
+        );
   }
 }

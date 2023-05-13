@@ -32,8 +32,8 @@ class _DraggableButtonState extends State<DraggableButton> {
             });
           },
           child: Container(
-            width: 65.0,
-            height: 65.0,
+            width: 55.0,
+            height: 55.0,
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(15.0),

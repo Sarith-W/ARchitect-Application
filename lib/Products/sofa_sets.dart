@@ -55,8 +55,21 @@ class ProductsSofaSets extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa1Img.jpg', 'Modern'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/sofa1Img.jpg', 'Modern'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -69,8 +82,21 @@ class ProductsSofaSets extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa2Img.jpg', 'Eagle'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/sofa2Img.jpg', 'Eagle'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -83,8 +109,21 @@ class ProductsSofaSets extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa3Img.jpg', 'Brownie'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/sofa3Img.jpg', 'Brownie'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -97,8 +136,21 @@ class ProductsSofaSets extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa4Img.jpg', 'Coupe'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/sofa4Img.jpg', 'Coupe'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 15.0),
                         GestureDetector(
@@ -111,8 +163,21 @@ class ProductsSofaSets extends StatelessWidget {
                               ),
                             );
                           },
-                          child: buildImageStack(context, sizedBoxHeight,
-                              'assets/images/sofa5Img.jpg', 'Divan'),
+                          child: Stack(
+                            children: [
+                              buildImageStack(
+                                  context, sizedBoxHeight, 'assets/images/sofa5Img.jpg', 'Divan'),
+                              Positioned(
+                                top: 10,
+                                right: 10,
+                                child: Image.asset(
+                                  'assets/images/360.png',
+                                  width: 50,
+                                  height: 370,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

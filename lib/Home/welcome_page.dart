@@ -70,43 +70,56 @@ class WelcomePage extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 30),
                       height: 60,
                       width: 300,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                            backgroundColor: Colors.black87,
-                            foregroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                            ),
-                            textStyle: const TextStyle(
-                              fontFamily: 'Itim',
-                              fontSize: 17,
-                            )),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SignInPage(key: Key('signInPage'))),
-                          );
-                        },
-                        child: const Text("Sign In"),
-                      )),
+                    child: FloatingActionButton.extended(
+                      label: const Text(
+                        "Sign In",
+                        style: TextStyle(
+                            fontFamily: 'Quicksand',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white),
+                      ),
+                      backgroundColor: Colors.black,
+                      icon: const Icon(
+                        Icons.login,
+                        size: 22.0,
+                      ),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(20)),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const SignInPage(key: Key('signInPage'))),
+                        );
+                      },
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     height: 60,
                     width: 300,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Colors.black87,
-                          foregroundColor: Colors.white,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          textStyle: const TextStyle(
-                            fontFamily: 'Itim',
-                            fontSize: 17,
-                          )),
+                    child: FloatingActionButton.extended(
+                      label: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontFamily: 'Quicksand',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white),
+                      ),
+                      backgroundColor: Colors.black,
+                      icon: const Icon(
+                        Icons.create_outlined,
+                        size: 22.0,
+                      ),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(20)),
+                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -115,26 +128,30 @@ class WelcomePage extends StatelessWidget {
                                   SignUpPage(key: const Key('signUpPage'))),
                         );
                       },
-                      child: const Text("Sign Up"),
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     height: 60,
                     width: 300,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        textStyle: const TextStyle(
-                          fontFamily: 'Itim',
-                          fontSize: 17,
-                        ),
+                    child: FloatingActionButton.extended(
+                      label: const Text(
+                        "Continue as Guest",
+                        style: TextStyle(
+                            fontFamily: 'Quicksand',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black),
+                      ),
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      icon: const Icon(
+                        Icons.person,
+                        size: 22.0,
+                      ),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(20)),
                       ),
                       onPressed: () {
                         FirebaseAuth.instance.signOut();
@@ -147,7 +164,6 @@ class WelcomePage extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text("Continue as Guest"),
                     ),
                   ),
                 ],

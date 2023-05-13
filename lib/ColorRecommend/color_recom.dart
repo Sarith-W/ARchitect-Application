@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:io';
-import 'package:architect_app/Home/home_button.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -194,7 +193,6 @@ class _CameraPageState extends State<CameraPage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
               ),
-            const DraggableButton(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
