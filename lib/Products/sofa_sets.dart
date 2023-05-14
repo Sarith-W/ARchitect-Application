@@ -166,7 +166,7 @@ class ProductsSofaSets extends StatelessWidget {
                           child: Stack(
                             children: [
                               buildImageStack(
-                                  context, sizedBoxHeight, 'assets/images/sofa5Img.jpg', 'Divan'),
+                                  context, sizedBoxHeight, 'assets/images/sofa5Img.jpg', 'Gamer'),
                               Positioned(
                                 top: 10,
                                 right: 10,

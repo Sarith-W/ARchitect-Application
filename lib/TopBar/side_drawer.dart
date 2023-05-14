@@ -78,6 +78,15 @@ class SideDrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
+            title: const Text('Home'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+            },
+          ),
+          ListTile(
             title: const Text('View In AR'),
             onTap: () {
               Navigator.push(
@@ -144,6 +153,40 @@ class SideDrawerWidget extends StatelessWidget {
                 ),
               );
             },
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 60),
+            height: 30,
+            width: 500,
+            child: const Align(
+              alignment: Alignment.center,
+              child: Text(
+                "©Researched & Developed By",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Itim',
+                  fontSize: 15,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 20,
+            width: 500,
+            child: const Align(
+              alignment: Alignment.center,
+              child: Text(
+                "SE-52 Brogrammers",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Itim',
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
           ),
         ],
       ),

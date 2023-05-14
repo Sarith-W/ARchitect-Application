@@ -35,8 +35,8 @@ class _ARViewWidgetState extends State<ARViewWidget> {
   ARAnchorManager? arAnchorManager;
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
-  String currentObjectUri =
-      "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa1.glb";
+  String currentObjectUri = "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa1.glb";
+  var scaleValue = 0.8;
 
   ScreenshotController screenshotController = ScreenshotController();
   late Classifier _classifier;
@@ -100,6 +100,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () {
+                                    Navigator.pop(context);
                                     onTakeScreenshot();
                                   },
                                 ),
@@ -113,42 +114,53 @@ class _ARViewWidgetState extends State<ARViewWidget> {
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa1.glb",
                                           "assets/images/sofa1Img.jpg",
+                                          2.0
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa2.glb",
                                           "assets/images/sofa2Img.jpg",
+                                          0.5
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa3.glb",
                                           "assets/images/sofa3Img.jpg",
+                                          0.2
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa4.glb",
                                           "assets/images/sofa4Img.jpg",
+                                          0.6
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/sofa5.glb",
                                           "assets/images/sofa5Img.jpg",
+                                          100.0
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table1.glb",
                                           "assets/images/table1Img.png",
+                                          3.0
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table2.glb",
                                           "assets/images/table2Img.png",
+                                          20.0
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table3.glb",
                                           "assets/images/table3Img.png",
+                                          85.0
+
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table4.glb",
                                           "assets/images/table4Img.png",
+                                          2.0
                                         ),
                                         buildOption(
                                           "https://raw.githubusercontent.com/Sarith-W/ARchitect-3D-Objects/main/models/table5.glb",
                                           "assets/images/table5Img.png",
+                                          30.0
                                         ),
                                       ],
                                     ),
@@ -357,7 +369,7 @@ class _ARViewWidgetState extends State<ARViewWidget> {
       var newNode = ARNode(
           type: NodeType.webGLB,
           uri: currentObjectUri,
-          scale: vector.Vector3(0.8, 0.8, 0.8),
+          scale: vector.Vector3(scaleValue, scaleValue, scaleValue),
           position: vector.Vector3(0.0, 0.0, 0.0),
           rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0)
       );
@@ -372,12 +384,13 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     }
   }
 
-  Widget buildOption(String objectUrl, String imagePath) {
+  Widget buildOption(String objectUrl, String imagePath, var value) {
     return Padding(
       padding: const EdgeInsets.only(right: 5.0),
       child: GestureDetector(
         onTap: () {
           currentObjectUri = objectUrl;
+          scaleValue = value;
           Navigator.pop(context);
         },
         child: ClipRRect(

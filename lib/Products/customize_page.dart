@@ -47,7 +47,10 @@ class _CustomizeState extends State<Customize> {
                 margin: const EdgeInsets.only(top: 20),
                 child: const Text(
                   "Select a color",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                      fontSize: 20,
+                    fontFamily: 'Quicksand',
+                  ),
                 ),
               ),
               const SizedBox(
@@ -119,7 +122,10 @@ class _CustomizeState extends State<Customize> {
               ),
               const Text(
                 "Select a dimension",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Quicksand'
+                ),
               ),
               Center(
                 child: Padding(

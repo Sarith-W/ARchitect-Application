@@ -59,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                         "Welcome to ARchitect",
                         style: TextStyle(
                           fontFamily: 'Itim',
-                          fontSize: 25,
+                          fontSize: 28,
                           fontStyle: FontStyle.italic,
                           color: Colors.black,
                         ),
@@ -168,7 +168,42 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 820),
+              height: 30,
+              width: 500,
+              child: const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "©Researched & Developed By",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Itim',
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 840),
+              height: 30,
+              width: 500,
+              child: const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "SE-52 Brogrammers",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Itim',
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
