@@ -380,10 +380,19 @@ class _ARViewWidgetState extends State<ARViewWidget> {
       var newNode = ARNode(
           type: NodeType.webGLB,
           uri: currentObjectUri,
-          scale: vector.Vector3(scaleValue, scaleValue, scaleValue),
+          scale: vector.Vector3(0.8, 0.8, 0.8),
           position: vector.Vector3(0.0, 0.0, 0.0),
           rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0)
       );
+      if (Platform.isIOS){
+        newNode = ARNode(
+            type: NodeType.webGLB,
+            uri: currentObjectUri,
+            scale: vector.Vector3(scaleValue, scaleValue, scaleValue),
+            position: vector.Vector3(0.0, 0.0, 0.0),
+            rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0)
+        );
+      }
       bool? didAddNodeToAnchor = await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
       if (didAddNodeToAnchor!) {
         nodes.add(newNode);
