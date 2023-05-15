@@ -235,14 +235,25 @@ class _ARViewWidgetState extends State<ARViewWidget> {
     this.arSessionManager = arSessionManager;
     this.arObjectManager = arObjectManager;
     this.arAnchorManager = arAnchorManager;
-    this.arSessionManager!.onInitialize(
-          showFeaturePoints: false,
-          showPlanes: false,
-          customPlaneTexturePath: "assets/images/triangle.png",
-          showWorldOrigin: false,
-          handlePans: true,
-          handleRotation: true,
-        );
+    if (Platform.isIOS) {
+      this.arSessionManager!.onInitialize(
+        showFeaturePoints: false,
+        showPlanes: false,
+        customPlaneTexturePath: "assets/images/triangle.png",
+        showWorldOrigin: false,
+        handlePans: true,
+        handleRotation: true,
+      );
+    }else{
+      this.arSessionManager!.onInitialize(
+        showFeaturePoints: false,
+        showPlanes: true,
+        customPlaneTexturePath: "assets/images/triangle.png",
+        showWorldOrigin: false,
+        handlePans: true,
+        handleRotation: true,
+      );
+    }
     this.arObjectManager!.onInitialize();
     this.arSessionManager!.onPlaneOrPointTap = onPlaneOrPointTapped;
   }
